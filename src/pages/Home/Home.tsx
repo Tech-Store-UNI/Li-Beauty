@@ -1,10 +1,11 @@
 import { Box } from '@mui/material'
-import { Features } from '../../components/Home/Features/Features'
-import { Banner } from '../../components/Home/Banner/Banner'
-import { Sobre } from '../../components/Home/Sobre/Sobre'
-import { Catalogo } from '../../components/Home/Catalogos/Catalogos'
-import { LocalEstabelecimento } from '../../components/Home/LocalEstabelecimento/LocalEstabelecimento'
-import { EntreContato } from '../../components/Home/EntreContato/EntreContato'
+import { Banner } from '../../components/Pages/Home/Banner/Banner'
+import { Features } from '../../components/Pages/Home/Features/Features'
+import { Sobre } from '../../components/Pages/Home/Sobre/Sobre'
+import { Catalogo } from '../../components/Pages/Home/Catalogos/Catalogos'
+import { LocalEstabelecimento } from '../../components/Pages/Home/LocalEstabelecimento/LocalEstabelecimento'
+import { EntreContato } from '../../components/Pages/Home/EntreContato/EntreContato'
+
 
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
                 <Catalogo />
                 <LocalEstabelecimento />
                 <EntreContato />
+
             </Box>
         </Box>
     )

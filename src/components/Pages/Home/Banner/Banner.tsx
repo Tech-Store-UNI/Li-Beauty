@@ -1,8 +1,8 @@
 import { Box, Typography, Container, Button, Avatar } from '@mui/material';
-import videoFundo from "../../../img/Video-LiBeaty.mp4";
-import FotoBanner from "../../../img/banner-foto.png";
-import { getGradient } from '../../../util/gradients';
-import { textGradient } from '../../../styles/StylesComun.style';
+import videoFundo from "../../../../img/Video-LiBeaty.mp4";
+import FotoBanner from "../../../../img/banner-foto.png";
+import { getGradient } from '../../../../util/gradients';
+import { textGradient } from '../../../../styles/StylesComun.style';
 
 
 export const Banner: React.FC = () => {

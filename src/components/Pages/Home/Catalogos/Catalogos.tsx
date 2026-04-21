@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { catalogoData } from './util/util';
-import { getGradient } from '../../../util/gradients';
-import { textGradient } from '../../../styles/StylesComun.style';
 import { useNavigate } from 'react-router-dom';
+import { getGradient } from '../../../../util/gradients';
+import { textGradient } from '../../../../styles/StylesComun.style';
+import { catalogoData } from './util/util';
 
 export const Catalogo: React.FC = () => {
     const navigate = useNavigate();

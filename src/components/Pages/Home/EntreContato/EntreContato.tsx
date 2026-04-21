@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
-import fundoContato from "../../../img/Funco-entreContao.png";
-import { getGradient } from "../../../util/gradients";
+import fundoContato from "../../../../img/Funco-entreContao.png";
+import { getGradient } from "../../../../util/gradients";
 
 export const EntreContato: React.FC = () => {
     return (

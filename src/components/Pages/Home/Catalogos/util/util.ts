@@ -1,8 +1,8 @@
 // Importando as imagens conforme sua estrutura de pastas
-import imgCilios from '../../../../img/Img-Cilios.png';
-import imgSobrancelhas from '../../../../img/Img-Sobrancelhas.png';
-import imgMicropig from '../../../../img/Img-micropig.png';
-import imgMake from '../../../../img/Img-make.png';
+import imgCilios from '../../../../../img/Img-Cilios.png';
+import imgSobrancelhas from '../../../../../img/Img-Sobrancelhas.png';
+import imgMicropig from '../../../../../img/Img-micropig.png';
+import imgMake from '../../../../../img/Img-make.png';
 
 export interface CatalogoItem {
   titulo: string;

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 
-import imgLocal from "../../../img/Img-local.png";
-import IconLocal from "../../../img/iconlocal.png";
-import { textGradient } from "../../../styles/StylesComun.style";
-import { getGradient } from "../../../util/gradients";
+import imgLocal from "../../../../img/Img-local.png";
+import IconLocal from "../../../../img/iconlocal.png";
+import { textGradient } from "../../../../styles/StylesComun.style";
+import { getGradient } from "../../../../util/gradients";
 
 export const LocalEstabelecimento: React.FC = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
-import fundoSobre from '../../../img/fundo-sobre.png';
-import logoCliente from '../../../img/Logo-Cliente.png';
-import { getGradient } from '../../../util/gradients';
-import { textGradient } from '../../../styles/StylesComun.style';
+import fundoSobre from '../../../../img/fundo-sobre.png';
+import logoCliente from '../../../../img/Logo-Cliente.png';
+import { getGradient } from '../../../../util/gradients';
+import { textGradient } from '../../../../styles/StylesComun.style';
 
 export const Sobre: React.FC = () => {
     return (
