@@ -72,6 +72,7 @@ export const ContatoInputs: React.FC = () => {
               <Button
                sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 20, py: 1.,fontSize: 19, mt:1
 
+                
                  }}
                variant="contained" fullWidth>
                 
