@@ -18,7 +18,7 @@ export const Navbar = () => {
     const handleCloseServices = () => { setAnchorEl(null); };
 
     return (
-        <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid #f0f0f0', backgroundColor: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', top: 0, zIndex: 1100, }} >
+        <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid #f0f0f0', backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', top: 0, zIndex: 1100, }} >
             <Container maxWidth={false} sx={{ maxWidth: '1300px', px: { xs: 3, md: 5 } }}>
                 <Toolbar sx={{ justifyContent: 'space-between', px: '0 !important', height: '90px' }}>
                     <RouterLink to="/">
