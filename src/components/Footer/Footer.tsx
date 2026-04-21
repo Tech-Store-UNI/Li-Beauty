@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Link, Stack, IconButton, Button, } from '@mui/material';
+import { Box, Container, Typography, Link, Stack, IconButton,  } from '@mui/material';
 import { Phone, Email, AccessTime } from '@mui/icons-material';
 import logoFooter from "../../img/Logo.png"
 import whatsIcon from '../../img/Whats.png';
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
                             <Link href="#" color="text.primary" underline="none">Serviços</Link>
                             <Link href="#" color="text.primary" underline="none">Portfólio</Link>
                             <Link href="#" color="text.primary" underline="none">Contato</Link>
-                            <Button variant="contained" sx={{}}>Contained</Button>
+                            
                         </Stack>
                     </Box>
 
