@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Navbar } from '../NavBar/NavBar';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { getGradient } from '../../util/gradients';
+import { Footer } from '../Footer/Footer';
 
 export const Layout = () => {
   return (
@@ -14,6 +15,7 @@ export const Layout = () => {
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Outlet />
       </Box>
+      <Footer />
       <Fab
         href="https://wa.me/"
         target="_blank"

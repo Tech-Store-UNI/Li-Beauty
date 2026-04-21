@@ -11,11 +11,7 @@ export const Home = () => {
     return (
         <Box>
             <Banner />
-            <Box sx={{
-                marginTop: { xs: '-50px', md: '-90px' },
-                position: 'relative',
-                zIndex: 1000
-            }}>
+            <Box sx={{ marginTop: { xs: '-50px', md: '-90px' }, position: 'relative', zIndex: 1000 }}>
                 <Features />
                 <Sobre />
                 <Catalogo />
