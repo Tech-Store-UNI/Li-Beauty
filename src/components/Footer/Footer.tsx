@@ -105,15 +105,15 @@ export const Footer: React.FC = () => {
                         <Stack spacing={2}>
                             <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
                                 <Phone sx={{ color: '#F9C7C7' }} fontSize="small" />
-                                <Typography variant="body1">(11) 94489-2012</Typography>
+                                <Typography variant="body1">(11) 96569-2005</Typography>
                             </Stack>
                             <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
                                 <Email sx={{ color: '#F9C7C7' }} fontSize="small" />
-                                <Typography variant="body1">email@libeauty.com.br</Typography>
+                                <Typography variant="body1">lilicruz.studio@gmail.com</Typography>
                             </Stack>
                             <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
                                 <AccessTime sx={{ color: '#F9C7C7' }} fontSize="small" />
-                                <Typography variant="body1">Segunda à Sexta: 8h às 18h</Typography>
+                                <Typography variant="body1">Terça à Sexta: 10h às 20h / Sábado: 10h às 17h</Typography>
                             </Stack>
                         </Stack>
                     </Box>
