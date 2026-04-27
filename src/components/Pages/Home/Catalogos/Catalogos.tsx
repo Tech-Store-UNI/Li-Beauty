@@ -18,7 +18,7 @@ export const Catalogo: React.FC = () => {
                 <Typography variant="h4" sx={{ fontWeight: 500, mb: 1, color: '#text.primary' }}>
                     CATÁLOGOS DA <Box component="span" sx={{ background: getGradient("dark"), ...textGradient, fontWeight: 500 }}>LI BEAUTY</Box>
                 </Typography>
-                <Typography  sx={{ color: '#353535', mb: 5, fontSize: 16.5  }}>
+                <Typography  sx={{ color: 'text.primary', mb: 5, fontSize: 16.5  }}>
                     Procedimentos especializados para destacar sua beleza natural.
                 </Typography>
 

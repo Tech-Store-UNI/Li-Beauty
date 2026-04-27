@@ -27,7 +27,7 @@ export const Sobre: React.FC = () => {
                             SOBRE A <Box component="span" sx={{ background: getGradient("dark"), ...textGradient, fontWeight: 500 }}>LI BEAUTY</Box>
                         </Typography>
 
-                        <Typography variant="body1" sx={{ color: '#353535', mb: 4, lineHeight: 1.8, textAlign: "justify" }}>
+                        <Typography variant="body1" sx={{ color: 'text.primary', mb: 4, lineHeight: 1.8, textAlign: "justify" }}>
                             Na Li Beauty, cada atendimento é pensado para valorizar sua beleza e elevar sua autoestima. Aqui você encontra um espaço acolhedor, atendimento personalizado e procedimentos realizados com técnica, segurança e atenção aos detalhes. Especializado em extensão de cílios, design de sobrancelhas, micropigmentação e maquiagem, o studio oferece uma experiência única para mulheres que desejam se sentir ainda mais confiantes e bonitas. Mais do que estética, nosso propósito é proporcionar bem - estar, confiança e autoestima em cada atendimento. Agende seu horário e venha viver a experiência Li Beauty.
                         </Typography>
 

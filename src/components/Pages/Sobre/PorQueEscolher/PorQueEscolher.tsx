@@ -1,7 +1,8 @@
-import { Box, Typography, Container, Button } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import { getGradient } from "../../../../util/gradients";
 import { textGradient } from "../../../../styles/StylesComun.style";
 import imgEscolher from "../../../../img/img-pessoa.png";
+import { Buttonpadrao } from "../../../Buttonpadrao/ButtonPadrao";
 
 export const PorQueEscolher = () => {
     return (
@@ -67,9 +68,7 @@ export const PorQueEscolher = () => {
                             atendimento é feito para realçar o melhor de você. Agende seu horário pelo WhatsApp e
                             venha viver a experiência Li Beauty.
                         </Typography>
-                        <Button variant="contained" sx={{ background: getGradient('main'), borderRadius: 4, px: 10, py: 1.4, fontSize: '1.05rem', textTransform: 'none',  }}>
-                            Agendamento online
-                        </Button>
+                        <Buttonpadrao />
 
                     </Box>
 

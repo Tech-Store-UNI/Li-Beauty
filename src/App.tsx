@@ -6,6 +6,8 @@ import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/Home/Home';
 import { Contato } from './pages/Contato/Contato';
 import { Sobre } from './pages/Sobre/Sobre';
+import { Servicos } from './pages/Servicos/Servicos';
+import { Cilios } from './components/Pages/Servicos/Cilios/Cilios';
 
 
 export function App() {
@@ -18,6 +20,8 @@ export function App() {
             <Route index element={<Home />} />
             <Route path="sobre" element={<Sobre />} />
             <Route path="contato" element={<Contato />} />
+            <Route path="servicos" element={<Servicos />} />
+            <Route path="servicos/cilios" element={<Cilios />} />
           </Route>
         </Routes>
       </BrowserRouter>

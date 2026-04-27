@@ -1,8 +1,9 @@
-import { Box, Typography, Button, Container } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import fundoTelaSobre from "../../../../img/fundo-sobre-tela.png";
 import imgLocal from "../../../../img/Foto-Sobre1.png";
 import { getGradient } from "../../../../util/gradients";
 import { textGradient } from "../../../../styles/StylesComun.style";
+import { Buttonpadrao } from "../../../Buttonpadrao/ButtonPadrao";
 
 export const ConheceInfos = () => {
     return (
@@ -38,24 +39,7 @@ export const ConheceInfos = () => {
                             cada cliente.
                         </Typography>
 
-                        <Button
-                            variant="contained"
-                            sx={{
-                                background: getGradient("main"),
-                                color: "white",
-                                px: 12,
-                                py: 1.2,
-                                borderRadius: "15px",
-                                fontWeight: "bold",
-                                textTransform: "none",
-                                fontSize: "1.1rem",
-                                "&:hover": {
-                                    opacity: 0.9,
-                                },
-                            }}
-                        >
-                            Agendamento online
-                        </Button>
+                        <Buttonpadrao />
                     </Box>
 
                     <Box sx={{ flex: 1, display: "flex", justifyContent: "center", }}>

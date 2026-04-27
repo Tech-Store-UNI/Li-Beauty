@@ -1,60 +1,100 @@
-import React from 'react';
-import { Box, Container, Typography, Link, Stack, IconButton,  } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Container, Typography, Link, Stack, Menu, MenuItem, } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Phone, Email, AccessTime } from '@mui/icons-material';
 import logoFooter from "../../img/Logo.png"
 import whatsIcon from '../../img/Whats.png';
-import instaIcon from '../../img/Instagram.png';
+import instaIcon from '../../img/Insta.png';
 import tiktokIcon from '../../img/Tiktok.png';
-import { getGradient } from '../../util/gradients';
 
 export const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    const handleOpenServices = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <Box component="footer" sx={{ bgcolor: '#FFF5F5', pt: 6 }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', gap: 4, mb: 6 }}>
 
-                    <Box sx={{ flex: 1.5 }}>
-                        <Box sx={{ mb: 2 }}>
+                    <Box sx={{ flex: 1.5, display: "flex", flexDirection: "column" }}>
+                        <Box sx={{ mb: 2, display: "flex", justifyContent: "center" , }}>
                             <Box
                                 component="img"
                                 src={logoFooter}
                                 alt="Icon Estabelecimento"
-                                sx={{ width: 240, }}
+                                sx={{ width: 210, }}
                             />
                         </Box>
-                        <Stack direction="row" spacing={1.5} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Stack direction="row" spacing={1.5} sx={{ display: "flex",justifyContent: "center" , }}>
                             <Link href="https://wa.me/" target="_blank" rel="noopener">
-                                <IconButton sx={{ p: 0, }}>
-                                    <Box component="img" src={whatsIcon} alt="WhatsApp" sx={{ width: 60, height: 60, background: getGradient('texto-banner'), p: 1, borderRadius: 100 }} />
-                                </IconButton>
+
+                                <Box component="img" src={whatsIcon} alt="WhatsApp" sx={{ width: 55, height: 55,  }} />
                             </Link>
                             <Link href="https://www.tiktok.com/@" target="_blank" rel="noopener">
-                                <IconButton sx={{ p: 0 }}>
-                                    <Box component="img" src={tiktokIcon} alt="TikTok" sx={{ width: 60, height: 60, background: getGradient('texto-banner'), p: 1, borderRadius: 100 }} />
-                                </IconButton>
+                                <Box component="img" src={tiktokIcon} alt="TikTok" sx={{ width: 55, height: 55, }} />
                             </Link>
                             <Link href="https://www.instagram.com/" target="_blank" rel="noopener">
-                                <IconButton sx={{ p: 0 }}>
-                                    <Box component="img" src={instaIcon} alt="Instagram" sx={{ width: 60, height: 60, background: getGradient('texto-banner'), p: 1, borderRadius: 100 }} />
-                                </IconButton>
+
+                                <Box component="img" src={instaIcon} alt="Instagram" sx={{ width: 55, height: 55, }} />
+
                             </Link>
                         </Stack>
                     </Box>
-                    
+
 
                     <Box sx={{ flex: .8 }}>
                         <Typography variant="h6" sx={{ mb: 2, color: 'text.primary' }}>
                             Menu
                         </Typography>
-                        <Stack spacing={1}>
-                            <Link href="#" sx={{}}>Home</Link>
-                            <Link href="#" color="text.primary" underline="none">Sobre</Link>
-                            <Link href="#" color="text.primary" underline="none">Serviços</Link>
-                            <Link href="#" color="text.primary" underline="none">Portfólio</Link>
-                            <Link href="#" color="text.primary" underline="none">Contato</Link>
-                            
+                        <Stack spacing={1.5}>
+                            <Link component={RouterLink} to="/" color="text.primary" underline="none" sx={{ '&:hover': { color: 'primary.main' } }}>
+                                Home
+                            </Link>
+
+                            <Link component={RouterLink} to="/sobre" color="text.primary" underline="none" sx={{ '&:hover': { color: 'primary.main' } }}>
+                                Sobre
+                            </Link>
+
+                            <Link
+                                href="#"
+                                onClick={handleOpenServices}
+                                color="text.primary"
+                                underline="none"
+                                sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', '&:hover': { color: 'primary.main' } }}
+                            >
+                                Serviços <KeyboardArrowDownIcon sx={{ fontSize: '1.2rem', ml: 0.5 }} />
+                            </Link>
+
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={handleClose}
+                                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                            >
+                                <MenuItem onClick={handleClose} component={RouterLink} to="/servicos/cilios">Cílios</MenuItem>
+                                <MenuItem onClick={handleClose} component={RouterLink} to="/servicos/sobracelhas">Sobracelhas</MenuItem>
+                                <MenuItem onClick={handleClose} component={RouterLink} to="/servicos/micropigmentacao">Micropigmentação</MenuItem>
+                                <MenuItem onClick={handleClose} component={RouterLink} to="/servicos/maquiagem">Maquiagem</MenuItem>
+                            </Menu>
+
+                            <Link component={RouterLink} to="/portfolio" color="text.primary" underline="none" sx={{ '&:hover': { color: 'primary.main' } }}>
+                                Portfólio
+                            </Link>
+
+                            <Link component={RouterLink} to="/contato" color="text.primary" underline="none" sx={{ '&:hover': { color: 'primary.main' } }}>
+                                Contato
+                            </Link>
                         </Stack>
                     </Box>
 
