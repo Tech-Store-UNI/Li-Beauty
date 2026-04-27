@@ -28,7 +28,7 @@ export const pacotesCilios = [
         nome: "Pacote 1",
         detalhes: ["1º mês", "1 aplicação", "3 manutenções semanais"],
         precoAntigo: "R$ 480,00",
-        img: pacote1 // sua imagem importada
+        img: pacote1 
     },
     {
         id: 2,
