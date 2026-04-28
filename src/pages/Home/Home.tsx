@@ -5,6 +5,8 @@ import { Sobre } from '../../components/Home/Sobre/Sobre'
 import { Catalogo } from '../../components/Home/Catalogos/Catalogos'
 import { LocalEstabelecimento } from '../../components/Home/LocalEstabelecimento/LocalEstabelecimento'
 import { EntreContato } from '../../components/Home/EntreContato/EntreContato'
+import { Avaliacoes } from '../../components/Home/Avaliacoes/Avaliacoes'
+import { Footer } from '../../components/Home/Footer/Footer'
 
 
 export const Home = () => {
@@ -21,6 +23,8 @@ export const Home = () => {
                 <Catalogo />
                 <LocalEstabelecimento />
                 <EntreContato />
+                <Avaliacoes />
+                <Footer />
             </Box>
         </Box>
     )
