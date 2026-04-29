@@ -9,6 +9,7 @@ import { Sobre } from './pages/Sobre/Sobre';
 import { Servicos } from './pages/Servicos/Servicos';
 import { Cilios } from './components/Pages/Servicos/Cilios/Cilios';
 import { Login } from './pages/Login/Login';
+import { Cadastro } from './pages/Cadastro/Cadastro';
 
 
 export function App() {
@@ -25,6 +26,7 @@ export function App() {
             <Route path="servicos/cilios" element={<Cilios />} />
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="cadastro" element={<Cadastro />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
