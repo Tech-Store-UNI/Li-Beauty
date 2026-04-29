@@ -30,7 +30,7 @@ export const Login = () => {
         setTimeout(() => {
             if (usuario === "admin" && senha === "1234") {
                 sessionStorage.setItem("isLogged", "true");
-                navigate("/home");
+                navigate("/dashboard");
             } else {
                 setErroLogin("Usuário ou senha inválidos.");
             }
