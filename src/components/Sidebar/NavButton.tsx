@@ -32,6 +32,7 @@ export const NavButton: React.FC<NavButtonProps> = ({
                 "&:hover": {
                     backgroundColor: active ? "#e57373" : "#fff6f6",
                 },
+                width: 200
             }}
         >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -40,7 +41,7 @@ export const NavButton: React.FC<NavButtonProps> = ({
                     {icon}
                 </Box>
 
-                <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
+                <Typography sx={{ fontSize: 13, fontWeight: active ? 900 : 500 }}>
                     {label}
                 </Typography>
             </Box>

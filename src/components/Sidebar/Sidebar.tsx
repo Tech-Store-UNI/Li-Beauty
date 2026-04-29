@@ -21,7 +21,7 @@ export const Sidebar = () => {
                 alt="Logo"
                 sx={{ width: 200, mb: 7, mr: 2 }}
             />
-            <Box sx={{ width: "100%", px: 2 }}>
+            <Box sx={{ width: "100%", px: 3 }}>
                 <NavButton
                     icon={<DashboardIcon />}
                     label="Dashboard"
