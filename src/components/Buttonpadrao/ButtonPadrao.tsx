@@ -1,10 +1,15 @@
 import { Button } from '@mui/material'
 import { getGradient } from '../../util/gradients'
+import { useNavigate } from 'react-router-dom';
 
 export const Buttonpadrao = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Button
       variant="contained"
+      onClick={() => navigate("/login")}
       sx={{
         background: getGradient("main"),
         color: "white",

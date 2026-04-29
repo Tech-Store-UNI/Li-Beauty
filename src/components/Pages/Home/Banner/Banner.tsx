@@ -3,9 +3,13 @@ import videoFundo from "../../../../img/Video-LiBeaty.mp4";
 import FotoBanner from "../../../../img/banner-foto.png";
 import { getGradient } from '../../../../util/gradients';
 import { textGradient } from '../../../../styles/StylesComun.style';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Banner: React.FC = () => {
+
+    const navigate = useNavigate();
+
     return (
         <Box component="section" sx={{ position: 'relative', height: { xs: "auto", md: "700px" }, overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
             <video
@@ -42,7 +46,9 @@ export const Banner: React.FC = () => {
                             Realçando sua beleza natural com técnica, cuidado e um olhar profissional para cada detalhe.
                         </Typography>
 
-                        <Button variant="contained"
+                        <Button
+                            variant="contained"
+                            onClick={() => navigate("/login")}
                             sx={{
                                 background: getGradient('main'),
                                 borderRadius: '50px',
@@ -80,7 +86,7 @@ export const Banner: React.FC = () => {
 
                 </Box>
             </Container>
-        
+
         </Box>
     );
 };

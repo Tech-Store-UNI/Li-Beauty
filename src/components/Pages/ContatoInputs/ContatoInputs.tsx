@@ -2,17 +2,15 @@ import React from "react";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import { getGradient } from "../../../util/gradients";
 import { textGradient } from "../../../styles/StylesComun.style";
+import { useNavigate } from "react-router-dom";
 
 export const ContatoInputs: React.FC = () => {
+
+ const navigate = useNavigate();
+
   return (
     <Box sx={{ p: 4, }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 5,
-        }}
-      >
+      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 5, }}>
         <Box sx={{ flex: 1 }}>
           <Box>
             <Typography variant="h4" sx={{ fontWeight: 500, mb: 1, color: '#text.primary' }}>
@@ -43,9 +41,7 @@ export const ContatoInputs: React.FC = () => {
               WhatsApp ou redes sociais e escolha o melhor dia para você.
             </Typography>
 
-            <Button
-              variant="contained"
-              sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19, mt: 3 }}>
+            <Button onClick={() => navigate("/login")} variant="contained" sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19, mt: 3 }}>
               Agendamento online
             </Button>
           </Box>

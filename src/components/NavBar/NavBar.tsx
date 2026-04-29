@@ -6,10 +6,12 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { getGradient } from '../../util/gradients';
 import Logo from "../../img/Logo.png"
 import { navItems } from './util/util';
+import { useNavigate } from "react-router-dom";
 
 
 export const Navbar = () => {
     const theme = useMuiTheme();
+    const navigate = useNavigate();
     const location = useLocation();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -76,6 +78,7 @@ export const Navbar = () => {
 
                             <Button
                                 variant="contained"
+                                onClick={() => navigate("/login")}
                                 sx={{
                                     background: getGradient('main'),
                                     color: '#ffffff',
@@ -96,7 +99,7 @@ export const Navbar = () => {
                     )}
                 </Toolbar>
             </Container>
-            
+
         </AppBar>
     );
 }

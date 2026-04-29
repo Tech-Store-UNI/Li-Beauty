@@ -10,6 +10,7 @@ import { textGradient } from '../../../../styles/StylesComun.style';
 import { catalogoData } from './util/util';
 
 export const Catalogo: React.FC = () => {
+    
     const navigate = useNavigate();
 
     return (
@@ -66,7 +67,7 @@ export const Catalogo: React.FC = () => {
                         ))}
                     </Swiper>
                 </Box>
-                <Button variant="contained" sx={{ background: getGradient('main'), borderRadius: '50px', px: 8, py: 1.2, fontSize: '1.05rem', textTransform: 'none', boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.42)', }}>
+                <Button onClick={() => navigate("/login")} variant="contained" sx={{ background: getGradient('main'), borderRadius: '50px', px: 8, py: 1.2, fontSize: '1.05rem', textTransform: 'none', boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.42)', }}>
                     Agendamento online
                 </Button>
             </Container>
