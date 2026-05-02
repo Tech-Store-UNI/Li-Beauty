@@ -42,9 +42,7 @@ export const Login = () => {
         });
 
         const resultado = await resposta.json();
-
-        console.log("O QUE O PHP MANDOU:", resultado);
-
+       
         if (resultado.erro) {
             setErroLogin(resultado.mensagem);
         } else {

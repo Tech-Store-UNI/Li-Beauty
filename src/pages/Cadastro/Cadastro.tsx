@@ -13,6 +13,7 @@ export const Cadastro = () => {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erros, setErros] = useState({ nome: "", email: "", senha: "", confirmar: "" });
+    const [erroCadastro, setErroCadastro] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [localLoading, setLocalLoading] = useState(false);
 
@@ -21,6 +22,7 @@ export const Cadastro = () => {
         if (!nome.trim()) novosErros.nome = "Informe o nome completo.";
         if (!email.trim()) novosErros.email = "Informe o e-mail.";
         if (senha.length < 6) novosErros.senha = "A senha deve ter no mínimo 6 caracteres.";
+        setErroCadastro("");
 
         setErros(novosErros);
 
@@ -73,6 +75,14 @@ export const Cadastro = () => {
                     <Typography variant="h4" sx={{ textAlign: "center", color: "primary.main", fontWeight: "bold", mb: 2, letterSpacing: 2, display: { xs: "none", md: "block" } }}>
                         CADASTRO
                     </Typography>
+
+                 {erroCadastro && !localLoading && (
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                         <Typography color="error" sx={{ fontSize: "14px", mt: 1 }}>
+                                {erroCadastro}
+                        </Typography>
+                    </Box>
+                )}
 
                     <TextField
                         label="Nome completo"
