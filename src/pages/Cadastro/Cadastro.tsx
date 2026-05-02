@@ -27,11 +27,38 @@ export const Cadastro = () => {
         if (Object.values(novosErros).some(x => x !== "")) return;
 
         setLocalLoading(true);
-        setTimeout(() => {
+        try {
+            // Preparação dos dados para enviar para a API
+            const dadosEnvio = {
+                nome: nome,
+                email: email,
+                senha: senha
+            };
+    
+            const resposta = await fetch('http://li-beauty-back.test/index.php?rota=login&acao=cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dadosEnvio)
+            });
+    
+            const resultado = await resposta.json();
+    
+            if (resultado.erro) {
+                alert("Erro: " + resultado.mensagem);
+            } else {
+                alert("Cadastro realizado com sucesso!");
+                navigate("/login");
+            }
+        } catch (error) {
+            console.error("Erro com a comunicação com a API:", error);
+            alert("Erro de conexão. Por favor, tente novamente mais tarde.");
+        } finally {
             setLocalLoading(false);
-            navigate("/login");
-        }, 1500);
-    };
+        }
+    }
+
 
     return (
         <Box component="main" sx={{ display: { xs: "block", md: "flex" }, height: "100vh", alignItems: "center", overflow: "hidden" }}>
