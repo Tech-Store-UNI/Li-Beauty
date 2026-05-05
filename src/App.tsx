@@ -4,9 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './theme';
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/Home/Home';
+import { Portifolio } from './components/Pages/Home/Portifolio/Portifolio';
 
 const Sobre = () => <div>Página Sobre</div>;
-
+ 
 export function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -16,6 +17,7 @@ export function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="sobre" element={<Sobre />} />
+             <Route path="portfolio" element={<Portifolio />} />
           </Route>
         </Routes>
       </BrowserRouter>
