@@ -15,6 +15,7 @@ import { DashBoard } from './pages/PaginasSistemas/DashBoard/DashBoard';
 import { Inventario } from './pages/PaginasSistemas/Inventario/Inventario';
 import { Clientes } from './pages/PaginasSistemas/Clientes/Clientes';
 import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
+import { Portifolio } from './components/Pages/Portfolio/Portfolio';
 
 
 export function App() {
@@ -28,11 +29,11 @@ export function App() {
             <Route path="sobre" element={<Sobre />} />
             <Route path="contato" element={<Contato />} />
             <Route path="servicos" element={<Servicos />} />
+            <Route path="portfolio" element={<Portifolio />} />
             <Route path="servicos/cilios" element={<Cilios />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
-
           <Route path="/dashboard" element={<LayoutSistema />}>
             <Route index element={<DashBoard />} />
             <Route path="agendamento" element={<Agendamento />} />
