@@ -46,12 +46,18 @@ export const Login = () => {
         if (resultado.erro) {
             setErroLogin(resultado.mensagem);
         } else {
-            sessionStorage.setItem("isLoggedIn", "true");
-            sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
+            // sessionStorage.setItem("isLoggedIn", "true");
+            // sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
 
+         const tokenJWT = resultado.token;
+             
             if (resultado.usuario.Perfil === "admin") {
+                sessionStorage.setItem("token", tokenJWT);
+                sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));                
                 navigate("/dashboard");
             } else {
+                localStorage.setItem("token", tokenJWT);
+                localStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
                 navigate("/");
             }
         }

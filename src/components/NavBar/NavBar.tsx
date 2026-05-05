@@ -18,6 +18,15 @@ export const Navbar = () => {
     const open = Boolean(anchorEl);
     const handleOpenServices = (event: React.MouseEvent<HTMLButtonElement>) => { setAnchorEl(event.currentTarget); };
     const handleCloseServices = () => { setAnchorEl(null); };
+    const handleAgendamentoClick = () => {
+        const tokenJWT = localStorage.getItem("token");
+
+        if (tokenJWT) {
+            navigate("/agendamento");
+        } else {
+            navigate("/login");
+        }
+    }
 
     return (
         <AppBar position="sticky" color="inherit" elevation={0} sx={{ borderBottom: '1px solid #f0f0f0', backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', top: 0, zIndex: 1100, }} >
@@ -78,7 +87,7 @@ export const Navbar = () => {
 
                             <Button
                                 variant="contained"
-                                onClick={() => navigate("/login")}
+                                onClick={handleAgendamentoClick}
                                 sx={{
                                     background: getGradient('main'),
                                     color: '#ffffff',

@@ -10,6 +10,16 @@ export const Banner: React.FC = () => {
 
     const navigate = useNavigate();
 
+    const handleAgendamentoClick = () => {
+        const tokenJWT = localStorage.getItem("token");
+
+        if (tokenJWT) {
+            navigate("/agendamento");
+        } else {
+            navigate("/login");
+        }
+    }
+
     return (
         <Box component="section" sx={{ position: 'relative', height: { xs: "auto", md: "700px" }, overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
             <video
@@ -48,7 +58,7 @@ export const Banner: React.FC = () => {
 
                         <Button
                             variant="contained"
-                            onClick={() => navigate("/login")}
+                            onClick={handleAgendamentoClick}
                             sx={{
                                 background: getGradient('main'),
                                 borderRadius: '50px',
