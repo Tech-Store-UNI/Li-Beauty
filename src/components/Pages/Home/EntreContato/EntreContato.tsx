@@ -40,7 +40,7 @@ export const EntreContato: React.FC = () => {
                                 backgroundColor: "#E88D8C",
                                 transform: "translateY(-2px)",
                             },
-                        }}
+                        }} 
                     >
                         Entre em contato
                     </Button>

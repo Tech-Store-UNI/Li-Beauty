@@ -8,7 +8,7 @@ export const NavbarTop = () => {
         <Box sx={{ height: 80, backgroundColor: "#ffffff", borderBottom: "1px solid #eee", display: "flex", alignItems: "center", justifyContent: "space-between", px: 3, }}>
             <Box>
                 <Typography sx={{ fontWeight: 900, fontSize: 17 }}>
-                    Olá, Mãe do Yan
+                    Olá, Lili
                 </Typography>
                 <Typography sx={{ fontSize: 12, color: "#747474" }}>
                     Seja bem-vinda ao sistema Beauty
@@ -79,7 +79,7 @@ export const NavbarTop = () => {
 
                     <Box>
                         <Typography sx={{ fontSize: 13, fontWeight: 600 }}>
-                            Mãe do Yan
+                            Liliane Cruz
                         </Typography>
                         <Typography sx={{ fontSize: 11, color: "#8c8c8c" }}>
                             Owner

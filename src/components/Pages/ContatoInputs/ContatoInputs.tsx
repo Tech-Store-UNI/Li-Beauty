@@ -8,6 +8,16 @@ export const ContatoInputs: React.FC = () => {
 
  const navigate = useNavigate();
 
+ const handleAgendamentoClick = () => {
+        const tokenJWT = localStorage.getItem("token");
+
+        if (tokenJWT) {
+            navigate("/agendamento");
+        } else {
+            navigate("/login");
+        }
+    }
+
   return (
     <Box sx={{ p: 4, }}>
       <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 5, }}>
@@ -41,7 +51,7 @@ export const ContatoInputs: React.FC = () => {
               WhatsApp ou redes sociais e escolha o melhor dia para você.
             </Typography>
 
-            <Button onClick={() => navigate("/login")} variant="contained" sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19, mt: 3 }}>
+            <Button onClick={handleAgendamentoClick} variant="contained" sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19, mt: 3 }}>
               Agendamento online
             </Button>
           </Box>

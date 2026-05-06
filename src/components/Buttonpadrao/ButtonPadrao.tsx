@@ -6,10 +6,20 @@ export const Buttonpadrao = () => {
 
   const navigate = useNavigate();
 
+    const handleAgendamentoClick = () => {
+        const tokenJWT = localStorage.getItem("token");
+
+        if (tokenJWT) {
+            navigate("/agendamento");
+        } else {
+            navigate("/login");
+        }
+    }
+
   return (
     <Button
       variant="contained"
-      onClick={() => navigate("/login")}
+      onClick={handleAgendamentoClick}
       sx={{
         background: getGradient("main"),
         color: "white",

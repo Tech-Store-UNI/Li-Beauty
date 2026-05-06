@@ -1,12 +1,22 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-
-import imgLocal from "../../../../img/Img-local.png";
-import IconLocal from "../../../../img/iconlocal.png";
 import { textGradient } from "../../../../styles/StylesComun.style";
 import { getGradient } from "../../../../util/gradients";
 
+import imgLocal from "../../../../img/Img-local.png";
+import IconLocal from "../../../../img/iconlocal.png";
+
 export const LocalEstabelecimento: React.FC = () => {
+  const endereco =
+    "Av. Cel. Sezefredo Fagundes, 2788 - Sl 03 - Jardim Tremembe, São Paulo";
+
+  const abrirNoMaps = () => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      endereco
+    )}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <Box sx={{ py: 2, width: "100%", backgroundColor: "background.default", overflow: "hidden", display: "flex", flexDirection: { xs: "column", md: "row" }, }}>
       <Box sx={{ width: { xs: "100%", md: "50%" }, pl: { xs: 3, md: 5 }, display: "flex", flexDirection: "column", justifyContent: "center", }}>
@@ -25,11 +35,14 @@ export const LocalEstabelecimento: React.FC = () => {
             sx={{ width: 50, mr: 2 }}
           />
           <Typography sx={{ fontSize: "30px", color: "text.primary" }}>
-            Av. Cel. Sezefredo Fagundes, 2788 - Sl 03 - Jardim Tremembe, São Paulo
+            {endereco}
           </Typography>
         </Box>
 
-        <Button sx={{ width: "fit-content", background: getGradient('texto-banner'), color: "#fff", borderRadius: "25px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19 }}>
+        <Button
+          onClick={abrirNoMaps}
+          sx={{ width: "fit-content", background: getGradient('texto-banner'), color: "#fff", borderRadius: "25px", px: 10, py: 1, boxShadow: "0 3px 10px #00000038", fontSize: 19 }}
+        >
           Ver estabelecimento
         </Button>
       </Box>

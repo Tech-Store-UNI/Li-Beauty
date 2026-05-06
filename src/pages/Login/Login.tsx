@@ -27,16 +27,46 @@ export const Login = () => {
 
         setLocalLoading(true);
 
-        setTimeout(() => {
-            if (usuario === "admin" && senha === "1234") {
-                sessionStorage.setItem("isLogged", "true");
+       try {
+        const dadosEnvio = {
+            usuario: usuario,
+            senha: senha
+        };
+
+        const resposta = await fetch('http://li-beauty-back.test/index.php?rota=login&acao=login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosEnvio)
+        });
+
+        const resultado = await resposta.json();
+       
+        if (resultado.erro) {
+            setErroLogin(resultado.mensagem);
+        } else {
+            // sessionStorage.setItem("isLoggedIn", "true");
+            // sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
+
+         const tokenJWT = resultado.token;
+             
+            if (resultado.usuario.Perfil === "admin") {
+                sessionStorage.setItem("token", tokenJWT);
+                sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));                
                 navigate("/dashboard");
             } else {
-                setErroLogin("Usuário ou senha inválidos.");
+                localStorage.setItem("token", tokenJWT);
+                localStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
+                navigate("/");
             }
-
-            setLocalLoading(false);
-        }, 800);
+        }
+       } catch (error) {
+        console.error("Erro com a comunicação com a API:", error);
+        setErroLogin("Erro de conexão. Por favor, tente novamente mais tarde.");
+       } finally {
+        setLocalLoading(false);
+       }
     };
 
     return (
