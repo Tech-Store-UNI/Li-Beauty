@@ -2,6 +2,7 @@ import { Box, Typography, Container } from '@mui/material';
 import { getGradient } from '../../../../util/gradients';
 import { textGradient } from '../../../../styles/StylesComun.style';
 
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
