@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Typography, TextField, Button, Paper } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, TextField, Button, Paper, Alert } from "@mui/material";
 import { getGradient } from "../../../util/gradients";
 import { textGradient } from "../../../styles/StylesComun.style";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,14 @@ import { useNavigate } from "react-router-dom";
 export const ContatoInputs: React.FC = () => {
 
  const navigate = useNavigate();
+
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const [alertaMensagem, setAlertaMensagem] = useState("");
+  const [alertaErro, setAlertaErro] = useState(false);
+  const [loading, setLoading] = useState(false);
 
  const handleAgendamentoClick = () => {
         const tokenJWT = localStorage.getItem("token");
@@ -17,6 +25,50 @@ export const ContatoInputs: React.FC = () => {
             navigate("/login");
         }
     }
+
+  const handleEnviarContato = async () => {
+    if (!nome.trim() || !email.trim() || !mensagem.trim()) {
+      setAlertaErro(true);
+      setAlertaMensagem("Por favor, preencha todos os campos antes de enviar.");
+      return;
+    }
+    setLoading(true);
+  
+  try {
+    const dadosEnvio = {
+      nome: nome,
+      email: email,
+      mensagem: mensagem
+    };
+
+    const resposta = await fetch ('http://li-beauty-back.test/index.php?rota=contato', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dadosEnvio)
+    });
+
+    const resultado = await resposta.json();
+
+    if (resultado.erro) {
+      setAlertaErro(true);
+      setAlertaMensagem(resultado.mensagem);
+    } else {
+      setAlertaErro(false);
+      setAlertaMensagem(resultado.mensagem);
+      setNome("");
+      setEmail("");
+      setMensagem("");
+    }
+  } catch (erro) {
+    console.error("Erro de requisição", erro);
+    setAlertaErro(true);
+    setAlertaMensagem("Erro de conexão com o Servidor. Tente novamente mais tarde!");
+  } finally {
+    setLoading(false);
+  }
+}
 
   return (
     <Box sx={{ p: 4, }}>
@@ -61,12 +113,35 @@ export const ContatoInputs: React.FC = () => {
           <Paper elevation={0} sx={{ p: 3, borderRadius: 2 }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 
-              <TextField fullWidth label="Nome:" />
-              <TextField fullWidth label="E-mail:" />
-              <TextField fullWidth label="Mensagem:" multiline rows={5} />
+              {alertaMensagem && (
+                <Alert severity={alertaErro ? "error" : "success"}>
+                  {alertaMensagem}
+                </Alert>
+              )}
 
-              <Button sx={{ background: getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 20, py: 1., fontSize: 19, mt: 1 }} fullWidth>
-                Enviar
+              <TextField 
+              fullWidth 
+              label="Nome:" 
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              />
+              <TextField 
+              fullWidth 
+              label="E-mail:" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField 
+              fullWidth 
+              label="Mensagem:" 
+              multiline 
+              rows={5} 
+              value={mensagem}
+              onChange={(e) => setMensagem(e.target.value)}
+              />
+
+              <Button onClick={handleEnviarContato} disabled={loading} sx={{ background: loading ? "#ccc" : getGradient('texto-banner'), color: "#fff", borderRadius: "12px", px: 20, py: 1., fontSize: 19, mt: 1 }} fullWidth>
+                {loading ? "Enviando..." : "Enviar"}
               </Button>
             </Box>
           </Paper>
