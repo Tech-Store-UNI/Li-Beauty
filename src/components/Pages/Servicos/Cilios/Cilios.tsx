@@ -8,71 +8,9 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Buttonpadrao } from '../../../Buttonpadrao/ButtonPadrao';
+import { ServiceCard } from '../../../ServiceCard/ServiceCard';
+import { PackageCard } from '../../../PackageCard/PackageCard';
 
-const ServiceCard = ({ item }: { item: any }) => (
-    <Box sx={{ position: 'relative', height: 280, borderRadius: '15px', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'transform 0.3s ease', width: 260, '&:hover': { transform: 'scale(1.01)' } }}>
-        <Box
-            component="img"
-            src={item.img}
-            alt={item.nome}
-            sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 1
-            }}
-        />
-        <Box sx={{ position: 'relative', zIndex: 3, p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '1rem', lineHeight: 1.2, maxWidth: '65%', textShadow: "3px 5px 16px #000000d8" }}>
-                {item.nome}
-            </Typography>
-
-            <Box sx={{ bgcolor: '#fff', color: '#E88D8C', px: 1, py: 0.3, borderRadius: '6px', fontWeight: 800, fontSize: '.9rem' }}>
-                {item.preco}
-            </Box>
-        </Box>
-    </Box>
-);
-
-const PackageCard = ({ item }: { item: any }) => (
-
-    <Box sx={{ position: "relative", width: "100%", overflow: "hidden", }}>
-        <Box
-            component="img"
-            src={item.img}
-            sx={{
-                width: "100%",
-                objectFit: "cover",
-            }}
-        />
-
-        <Box sx={{ position: "absolute", bottom: 35, left: 30, color: "#fff", }}>
-            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 4, }}>
-                {item.nome}
-            </Typography>
-
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Box >
-                    {item.detalhes.map((d: string, i: number) => (
-                        <Typography key={i} sx={{ ml: .5, fontSize: 20, }}>
-                            {d}
-                        </Typography>
-                    ))}
-                </Box>
-                <Box sx={{display: "flex", justifyContent: "end", width: 300}}>
-                    <Box sx={{ position: "relative", top: 35, backgroundColor: "background.paper", p: 2, height: 20, borderRadius: 2, width: 100, textAlign: "center" }} >
-                        <Typography sx={{ textDecoration: "line-through", opacity: 0.8, color: "primary.main", fontWeight: 900 }}>
-                            {item.precoAntigo}
-                        </Typography>
-                    </Box>
-                </Box>
-            </Box>
-        </Box>
-    </Box>
-);
 
 export const Cilios = () => {
     return (
@@ -107,7 +45,6 @@ export const Cilios = () => {
                     </Swiper>
                 </Box>
 
-                {/* Seção Pacotes com Swiper */}
                 <Box sx={{ textAlign: 'center', mb: 7}}>
                     <Typography variant="h4" sx={{ fontWeight: 600, background: getGradient("dark"), ...textGradient, textTransform: 'uppercase' }}>
                         Pacotes

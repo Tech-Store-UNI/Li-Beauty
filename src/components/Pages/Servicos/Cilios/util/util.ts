@@ -27,14 +27,14 @@ export const pacotesCilios = [
         id: 1,
         nome: "Pacote 1",
         detalhes: ["1º mês", "1 aplicação", "3 manutenções semanais"],
-        precoAntigo: "R$ 480,00",
+        preco: "R$ 480,00",
         img: pacote1 
     },
     {
         id: 2,
         nome: "Pacote 2",
         detalhes: ["1º mês", "Manutenção mensal", "4 manutenções semanais"],
-        precoAntigo: "R$ 440,00",
+        preco: "R$ 440,00",
         img: pacote2
     }
 ];

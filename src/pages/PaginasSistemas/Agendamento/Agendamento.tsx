@@ -26,7 +26,7 @@ export const Agendamento: React.FC = () => {
                 <Button
                     variant="contained"
                     sx={{
-                        mt: 2,
+                        mt: 1,
                         color: '#fff',
                         textTransform: 'none',
                         fontSize: '1.1rem',

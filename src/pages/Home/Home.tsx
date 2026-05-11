@@ -18,7 +18,7 @@ export const Home = () => {
                 <Catalogo />
                 <LocalEstabelecimento />
                 <EntreContato />
-
+                
             </Box>
         </Box>
     )

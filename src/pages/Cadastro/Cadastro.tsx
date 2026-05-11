@@ -30,7 +30,6 @@ export const Cadastro = () => {
 
         setLocalLoading(true);
         try {
-            // Preparação dos dados para enviar para a API
             const dadosEnvio = {
                 nome: nome,
                 email: email,

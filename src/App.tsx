@@ -16,6 +16,7 @@ import { Inventario } from './pages/PaginasSistemas/Inventario/Inventario';
 import { Clientes } from './pages/PaginasSistemas/Clientes/Clientes';
 import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
 import { Portifolio } from './components/Pages/Portfolio/Portfolio';
+import { Maquiagem } from './components/Pages/Servicos/Maquiagem/Maquiagem';
 
 
 export function App() {
@@ -31,6 +32,7 @@ export function App() {
             <Route path="servicos" element={<Servicos />} />
             <Route path="portfolio" element={<Portifolio />} />
             <Route path="servicos/cilios" element={<Cilios />} />
+            <Route path="servicos/maquiagem" element={<Maquiagem />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
