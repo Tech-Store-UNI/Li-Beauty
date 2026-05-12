@@ -35,7 +35,7 @@ export const Agendamento: React.FC = () => {
                         borderRadius: 2,
                         fontWeight: 'bold',
                         '&:hover': {
-                            backgroundColor: '#d88383', // Cor um pouco mais escura no hover
+                            backgroundColor: '#d88383', 
                         },
                     }}
                 >

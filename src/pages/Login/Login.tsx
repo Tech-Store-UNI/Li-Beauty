@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const Login = () => {
+
     const theme = useTheme();
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState("");
@@ -27,47 +28,18 @@ export const Login = () => {
 
         setLocalLoading(true);
 
-       try {
-        const dadosEnvio = {
-            usuario: usuario,
-            senha: senha
-        };
-
-        const resposta = await fetch('http://li-beauty-back.test/index.php?rota=login&acao=login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dadosEnvio)
-        });
-
-        const resultado = await resposta.json();
-       
-        if (resultado.erro) {
-            setErroLogin(resultado.mensagem);
-        } else {
-            // sessionStorage.setItem("isLoggedIn", "true");
-            // sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
-
-         const tokenJWT = resultado.token;
-             
-            if (resultado.usuario.Perfil === "admin") {
-                sessionStorage.setItem("token", tokenJWT);
-                sessionStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));                
+        setTimeout(() => {
+            if (usuario === "admin" && senha === "1234") {
+                sessionStorage.setItem("isLogged", "true");
                 navigate("/dashboard");
             } else {
-                localStorage.setItem("token", tokenJWT);
-                localStorage.setItem("usuarioLogado", JSON.stringify(resultado.usuario));
-                navigate("/");
+                setErroLogin("Usuário ou senha inválidos.");
             }
-        }
-       } catch (error) {
-        console.error("Erro com a comunicação com a API:", error);
-        setErroLogin("Erro de conexão. Por favor, tente novamente mais tarde.");
-       } finally {
-        setLocalLoading(false);
-       }
+
+            setLocalLoading(false);
+        }, 800);
     };
+
 
     return (
         <Box component="main" onKeyDown={(e) => { if (e.key === "Enter") handleLogin(); }} sx={{ display: { xs: "block", md: "flex" }, height: "100vh", alignItems: "center", overflow: "hidden", }}>
