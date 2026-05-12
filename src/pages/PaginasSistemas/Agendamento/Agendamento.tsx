@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { ModalAgendamento } from '../ModalAgendamento/ModalAgendamento';
 
 export const Agendamento: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <Container maxWidth={false} disableGutters sx={{ height: "70vh", display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
 
@@ -25,6 +28,7 @@ export const Agendamento: React.FC = () => {
 
                 <Button
                     variant="contained"
+                    onClick={() => setIsModalOpen(true)}
                     sx={{
                         mt: 1,
                         color: '#fff',
@@ -42,6 +46,8 @@ export const Agendamento: React.FC = () => {
                     Agendar horario
                 </Button>
             </Box>
+
+            <ModalAgendamento open={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </Container>
     );
 };
