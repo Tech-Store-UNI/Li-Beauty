@@ -9,6 +9,7 @@ import {
   InputAdornment,
   Divider,
   Button,
+  Container,
 } from "@mui/material";
 
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -58,6 +59,43 @@ export const DashBoard = () => {
         setAppointments([]);
         setSalesData([]);
         setTotalSales("R$ 0");
+        setLoading(true);
+        // Simulando um pequeno delay de carregamento do banco
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        setStats([
+          { 
+            title: "Faturamento Bruto", 
+            value: "R$ 20.245,00", 
+            icon: <AttachMoneyIcon />, 
+            trend: "0.5%", 
+            chartData: [40, 70, 50, 85, 60] 
+          },
+          { 
+            title: "Total de agendamentos", 
+            value: "256", 
+            icon: <CalendarMonthIcon />, 
+            trend: "12%", 
+            chartData: [30, 45, 90, 65, 80] 
+          },
+          { 
+            title: "Clientes ativos", 
+            value: "1.256", 
+            icon: <PersonIcon />, 
+            trend: "3.2%", 
+            chartData: [50, 60, 40, 70, 90] 
+          },
+        ]);
+
+        setAppointments([
+          { id: 1, nome: "Cristiane Lima", telefone: "(11) 94498-2012", categoria: "Cílios", servico: "Clássico", valor: "R$ 150,00", data: "27/04/2026", hora: "16:00" },
+          { id: 2, nome: "Mariana Silva", telefone: "(11) 97777-6666", categoria: "Cílios", servico: "Volume Russo", valor: "R$ 220,00", data: "27/04/2026", hora: "17:30" },
+          { id: 3, nome: "Juliana Costa", telefone: "(11) 98888-5555", categoria: "Sobrancelha", servico: "Design", valor: "R$ 50,00", data: "27/04/2026", hora: "18:45" },
+          { id: 4, nome: "Fernanda Lima", telefone: "(11) 91111-2222", categoria: "Cílios", servico: "Remoção", valor: "R$ 80,00", data: "27/04/2026", hora: "19:15" },
+        ]);
+
+        setSalesData([120, 125, 100, 160, 140, 130, 120, 145, 135, 125, 90, 130]);
+        setTotalSales("R$ 56.345,98");
       } catch (error) {
         console.error("Erro ao carregar dados do dashboard:", error);
       } finally {
@@ -69,19 +107,30 @@ export const DashBoard = () => {
   }, []);
 
   return (
-    <Box
+    <Container
+      maxWidth={false}
+      disableGutters
       sx={{
         width: "100%",
-        minHeight: "100vh",
-        background: BG_GRAY,
-        fontFamily: "Poppins, sans-serif",
+        maxWidth: "none", // Garante que não haja restrição de largura
+        flexGrow: 1,
         display: "flex",
         flexDirection: "column",
+        background: BG_GRAY,
+        fontFamily: "Poppins, sans-serif",
+        minHeight: "100vh",
       }}
     >
 
       {/* CONTEÚDO */}
-      <Box sx={{ px: 4, pb: 4, pt: 1, flex: 1 }}>
+      <Box
+        sx={{
+          width: "100%",
+          px: 3,
+          pb: 4,
+          pt: 2,
+        }}
+      >
         
         {/* CARDS SUPERIORES */}
         <Box
@@ -292,6 +341,6 @@ export const DashBoard = () => {
           </Box>
         </Paper>
       </Box>
-    </Box>
+    </Container>
   );
 };
