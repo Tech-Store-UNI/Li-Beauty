@@ -47,7 +47,7 @@ export const Sobrancelhas = () => {
                     sx={{
                         display: "grid",
                         gridTemplateColumns: "repeat(2, 1fr)",
-                        gap: 4,
+                        gap: 3,
                         mb: 8
                     }}
                 >
