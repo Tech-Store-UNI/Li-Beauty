@@ -16,5 +16,6 @@ export interface TableAction {
 }
 
 export interface TableRow {
-  [key: string]: string | number | React.ReactNode | null | object;
+  [key: string]: string | number | React.ReactNode | null | object | any;
+  
 }

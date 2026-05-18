@@ -5,7 +5,7 @@ import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 
 export const NavbarTop = () => {
     return (
-        <Box sx={{ height: 80, backgroundColor: "#ffffff", borderBottom: "1px solid #eee", display: "flex", alignItems: "center", justifyContent: "space-between", px: 3, }}>
+        <Box sx={{ height: 80, backgroundColor: "#ffffff", borderBottom: "1px solid #eee", display: "flex", alignItems: "center", justifyContent: "space-between", px: 3,py: 2.5 }}>
             <Box>
                 <Typography sx={{ fontWeight: 900, fontSize: 17 }}>
                     Olá, Lili

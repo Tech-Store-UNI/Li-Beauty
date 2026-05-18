@@ -27,6 +27,7 @@ interface TableContainerProps {
     LastColumnSx?: SxProps<Theme>;
     containerSx?: SxProps<Theme>;
     onRowClick?: (row: TableRowType) => void;
+    
 }
 
 export const MuiTableContainer: React.FC<TableContainerProps> = ({

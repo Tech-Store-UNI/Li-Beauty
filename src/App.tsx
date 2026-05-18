@@ -11,7 +11,7 @@ import { Cilios } from './components/Pages/Servicos/Cilios/Cilios';
 import { Login } from './pages/Login/Login';
 import { Cadastro } from './pages/Cadastro/Cadastro';
 import { LayoutSistema } from './components/LayoutSistema/LayoutSistema';
-import { DashBoard } from './pages/PaginasSistemas/DashBoard/DashBoard';
+import { Dashboard } from './pages/PaginasSistemas/DashBoard/DashBoard';
 import { Inventario } from './pages/PaginasSistemas/Inventario/Inventario';
 import { Clientes } from './pages/PaginasSistemas/Clientes/Clientes';
 import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
@@ -37,7 +37,7 @@ export function App() {
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
           <Route path="/dashboard" element={<LayoutSistema />}>
-            <Route index element={<DashBoard />} />
+            <Route index element={<Dashboard />} />
             <Route path="agendamento" element={<Agendamento />} />
             <Route path="clientes" element={<Clientes />} />
             <Route path="inventario" element={<Inventario />} />

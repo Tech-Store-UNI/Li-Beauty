@@ -28,7 +28,7 @@ export const containerTablecomunStyles = {
     bgcolor: "#fff",
     width: "100%",
     p: 3,
-    minHeight: "84vh",
-    boxShadow: { md: "0 0 20px rgba(48,48,48,0.18)" },
+    minHeight: "81.5vh",
+    boxShadow: { md: "0 0 20px rgba(48, 48, 48, 0.06)" },
     borderRadius: 2,
 }
