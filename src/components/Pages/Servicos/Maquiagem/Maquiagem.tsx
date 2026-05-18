@@ -22,11 +22,10 @@ export const Maquiagem = () => {
                     </Typography>
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
                         <Typography variant="body1" sx={{ color: 'text.primary', mb: 1, textAlign: "justify", width: 1100 }}>
-                            Escolha a maquiagem ideal para valorizar sua beleza com um toque personalizado.
-                            Trabalhamos com maquiagem social e maquiagem para eventos. A maquiagem profissional
-                            valoriza os traços naturais e realça a beleza de cada cliente. Na Li Beauty,
-                            cada maquiagem é feita de forma personalizada, considerando o estilo, ocasião e
-                            preferência da cliente, garantindo um resultado elegante e duradouro.
+                            Escolha o procedimento ideal para valorizar suas sobrancelhas com um design personalizado. Realizamos
+                            serviços de sobrancelhas com técnicas que valorizam a expressão e harmonizam o rosto. Na Li Beauty,
+                            cada atendimento é personalizado para entregar um resultado natural, delicado e alinhado ao estilo
+                            de cada cliente.
                         </Typography>
                     </Box>
                 </Box>
