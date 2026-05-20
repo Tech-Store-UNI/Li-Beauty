@@ -3,6 +3,7 @@ import { ConheceInfos } from '../../components/Pages/Sobre/Conheca/Conhece'
 import { ExperienciaStudio } from '../../components/Pages/Sobre/ExperienciaStudio/ExperienciaStudio'
 import { PorQueEscolher } from '../../components/Pages/Sobre/PorQueEscolher/PorQueEscolher'
 import { MissaoStudio } from '../../components/Pages/Sobre/MissaoStudio/MissaoStudio'
+import { Politicas } from '../../components/Pages/Sobre/Politicas/Politicas'
 
 export const Sobre = () => {
     return (
@@ -11,6 +12,7 @@ export const Sobre = () => {
             <ExperienciaStudio />
             <PorQueEscolher />
             <MissaoStudio />
+            <Politicas />
         </Box>
     )
 }
