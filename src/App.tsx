@@ -12,11 +12,16 @@ import { Micropigmentacao } from './components/Pages/Servicos/Micropigmentacao/M
 import { Login } from './pages/Login/Login';
 import { Cadastro } from './pages/Cadastro/Cadastro';
 import { LayoutSistema } from './components/LayoutSistema/LayoutSistema';
-import { DashBoard } from './pages/PaginasSistemas/DashBoard/DashBoard';
+import { Dashboard } from './pages/PaginasSistemas/DashBoard/DashBoard';
 import { Inventario } from './pages/PaginasSistemas/Inventario/Inventario';
 import { Clientes } from './pages/PaginasSistemas/Clientes/Clientes';
 import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
 import { Portifolio } from './components/Pages/Portfolio/Portfolio';
+import { Maquiagem } from './components/Pages/Servicos/Maquiagem/Maquiagem';
+import { Sobrancelhas } from './components/Pages/Servicos/Sobrancelhas/Sobrancelhas';
+
+
+
 
 
 export function App() {
@@ -33,11 +38,13 @@ export function App() {
             <Route path="portfolio" element={<Portifolio />} />
             <Route path="servicos/cilios" element={<Cilios />} />
             <Route path="servicos/micropigmentacao" element={<Micropigmentacao />} />
+            <Route path="servicos/maquiagem" element={<Maquiagem />} />
+            <Route path="/servicos/sobrancelhas" element={<Sobrancelhas />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
           <Route path="/dashboard" element={<LayoutSistema />}>
-            <Route index element={<DashBoard />} />
+            <Route index element={<Dashboard />} />
             <Route path="agendamento" element={<Agendamento />} />
             <Route path="clientes" element={<Clientes />} />
             <Route path="inventario" element={<Inventario />} />

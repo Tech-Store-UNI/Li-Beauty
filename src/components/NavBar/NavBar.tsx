@@ -76,7 +76,7 @@ export const Navbar = () => {
                                         {item.hasDropdown && (
                                             <Menu anchorEl={anchorEl} open={open} onClose={handleCloseServices} elevation={2}>
                                                 <MenuItem onClick={handleCloseServices} component={RouterLink} to="/servicos/cilios">Cílios</MenuItem>
-                                                <MenuItem onClick={handleCloseServices} component={RouterLink} to="/servicos/sobracelhas">Sobracelhas</MenuItem>
+                                                <MenuItem onClick={handleCloseServices} component={RouterLink} to="/servicos/sobrancelhas">Sobrancelhas</MenuItem>
                                                 <MenuItem onClick={handleCloseServices} component={RouterLink} to="/servicos/micropigmentacao">Micropigmentação</MenuItem>
                                                 <MenuItem onClick={handleCloseServices} component={RouterLink} to="/servicos/maquiagem">Maquiagem</MenuItem>
                                             </Menu>
