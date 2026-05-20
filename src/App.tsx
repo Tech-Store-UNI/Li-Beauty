@@ -8,6 +8,7 @@ import { Contato } from './pages/Contato/Contato';
 import { Sobre } from './pages/Sobre/Sobre';
 import { Servicos } from './pages/Servicos/Servicos';
 import { Cilios } from './components/Pages/Servicos/Cilios/Cilios';
+import { Micropigmentacao } from './components/Pages/Servicos/Micropigmentacao/Micropigmentacao';
 import { Login } from './pages/Login/Login';
 import { Cadastro } from './pages/Cadastro/Cadastro';
 import { LayoutSistema } from './components/LayoutSistema/LayoutSistema';
@@ -31,6 +32,7 @@ export function App() {
             <Route path="servicos" element={<Servicos />} />
             <Route path="portfolio" element={<Portifolio />} />
             <Route path="servicos/cilios" element={<Cilios />} />
+            <Route path="servicos/micropigmentacao" element={<Micropigmentacao />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
