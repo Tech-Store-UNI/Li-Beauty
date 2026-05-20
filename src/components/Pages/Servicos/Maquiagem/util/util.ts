@@ -2,8 +2,6 @@
 import Maquiagem1 from "../../../../../img/Maquiagem1.png";
 import Maquiagem2 from "../../../../../img/Maquiagem2.png";
 
-
-
 export const Maquiagens = [
     {
         id: 1,

@@ -58,7 +58,7 @@ export const Dashboard = () => {
       sx={{
         width: "100%",
         background: BG_GRAY,
-        p: 3
+        p: 2
       }}
     >
       <Box>

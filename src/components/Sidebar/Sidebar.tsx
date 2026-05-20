@@ -4,7 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EventIcon from "@mui/icons-material/Event";
 import GroupIcon from "@mui/icons-material/Group";
-import InventoryIcon from "@mui/icons-material/Inventory";
 import logo from "../../img/logo.png";
 import { NavButton } from "./NavButton";
 
@@ -41,13 +40,6 @@ export const Sidebar = () => {
                     label="Clientes"
                     active={location.pathname === "/dashboard/clientes"}
                     onClick={() => navigate("/dashboard/clientes")}
-                />
-
-                <NavButton
-                    icon={<InventoryIcon />}
-                    label="Inventário"
-                    active={location.pathname === "/dashboard/inventario"}
-                    onClick={() => navigate("/dashboard/inventario")}
                 />
             </Box>
         </Box>

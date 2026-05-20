@@ -1,28 +1,40 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Tooltip, Typography } from "@mui/material";
 
 export const DADOS_EXIBICAO_AGENDAMENTOS = [
   {
     key: "foto",
     label: "Foto",
+    width: 50,
     render: (row: any) => (
       <Avatar
         src={row.foto}
         sx={{
-          width: 40,
-          height: 40,
+          width: 35,
+          height: 35,
           border: "2px solid #f2a7a7",
         }}
       />
     ),
   },
-  { key: "nome", label: "Nome" },
-  { key: "telefone", label: "Telefone" },
-  { key: "categoria", label: "Categoria" },
-  { key: "servico", label: "Serviço" },
-  { key: "valor", label: "Valor" },
-  { key: "tipopagamento", label: "Pagamento" },
-  { key: "data", label: "Data" },
-  { key: "hora", label: "Hora" },
+  {
+    key: "nome",
+    label: "Nome",
+    width: 90,
+    render: (row: any) => (
+      <Tooltip title={row.nome} arrow>
+        <Typography sx={{ maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontSize: 13, }}>
+          {row.nome}
+        </Typography>
+      </Tooltip>
+    ),
+  },
+  { key: "telefone", label: "Telefone", width: 30, },
+  { key: "categoria", label: "Categoria", width: 50, },
+  { key: "servico", label: "Serviço", width: 50, },
+  { key: "valor", label: "Valor", width: 50, },
+  { key: "tipopagamento", label: "Pagamento", width: 50, },
+  { key: "data", label: "Data", width: 50, },
+  { key: "hora", label: "Hora", width: 50, },
 ];
 
 export const rowsAppointments = [

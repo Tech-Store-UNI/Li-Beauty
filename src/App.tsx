@@ -12,7 +12,6 @@ import { Login } from './pages/Login/Login';
 import { Cadastro } from './pages/Cadastro/Cadastro';
 import { LayoutSistema } from './components/LayoutSistema/LayoutSistema';
 import { Dashboard } from './pages/PaginasSistemas/DashBoard/DashBoard';
-import { Inventario } from './pages/PaginasSistemas/Inventario/Inventario';
 import { Clientes } from './pages/PaginasSistemas/Clientes/Clientes';
 import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
 import { Portifolio } from './components/Pages/Portfolio/Portfolio';
@@ -45,7 +44,6 @@ export function App() {
             <Route index element={<Dashboard />} />
             <Route path="agendamento" element={<Agendamento />} />
             <Route path="clientes" element={<Clientes />} />
-            <Route path="inventario" element={<Inventario />} />
           </Route>
         </Routes>
       </BrowserRouter>
