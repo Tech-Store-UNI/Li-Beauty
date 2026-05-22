@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { LoginService } from "./login.service";
-import type { LoginRequest, UsuarioLogado } from "./login.types";
+import type {  LoginRequest, UsuarioLogado } from "./login.types";
 import { isErrorResponse } from "../../util/validation";
 
 
@@ -24,3 +24,4 @@ export const loginUsuario = createAsyncThunk<
     }
   }
 );
+

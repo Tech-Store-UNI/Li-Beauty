@@ -8,6 +8,7 @@ import type { RootState, AppDispatch } from "../../app/store";
 import { loginUsuario } from "../../features/login/login.thunks";
 import theme from "../../theme";
 import { useNavigate } from "react-router-dom";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 export const Login = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -43,43 +44,36 @@ export const Login = () => {
         }
     };
 
+    const handleSair = () => {
+        navigate("/");
+    };
+
     return (
-        <Box
-            component="main"
-            onKeyDown={(e) => {
-                if (e.key === "Enter") handleLogin();
-            }}
-            sx={{
-                display: { xs: "block", md: "flex" },
-                height: "100vh",
-                alignItems: "center",
-                overflow: "hidden",
-            }}
-        >
-            <Box
-                sx={{
-                    backgroundImage: `url(${fundoLogin})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    height: { xs: "0vh", md: "100vh" },
-                    width: { xs: "100%", md: "50%" },
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    px: 3,
-                }}
-            >
-                <Box
-                    component="img"
-                    src={logo}
-                    alt="Logo"
-                    sx={{
-                        width: "86%",
-                        position: { xs: "absolute", md: "static" },
-                        top: { xs: "110px", sm: "180px", md: "0px" },
-                    }}
-                />
+        <Box component="main" onKeyDown={(e) => { if (e.key === "Enter") handleLogin(); }}
+            sx={{ display: { xs: "block", md: "flex" }, height: "100vh", alignItems: "center", overflow: "hidden", }}>
+            <Box sx={{ backgroundImage: `url(${fundoLogin})`, position: "relative", backgroundSize: "cover", backgroundPosition: "center", height: { xs: "0vh", md: "100vh" }, width: { xs: "100%", md: "50%" }, display: "flex", justifyContent: "center", alignItems: "center", px: 3 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+                    <Button
+                        onClick={handleSair}
+                        variant="contained"
+                        sx={{
+                            position: "absolute",
+                            top: 20,
+                            left: 20,
+                            minWidth: 40,
+                            minHeight: 40,
+                            borderRadius: "50%",
+                            p: 0,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <HighlightOffIcon sx={{ color: "white", fontSize: 30 }} />
+                    </Button>
+
+                    <Box component="img" src={logo} alt="Logo" sx={{ width: "86%" }} />
+                </Box>
             </Box>
 
             <Box

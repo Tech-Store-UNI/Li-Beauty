@@ -3,39 +3,47 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import loginReducer from "../features/login/login.slice";
+import usuarioReducer from "../features/usuarios/usuarios.slice";
+import cadastroReducer from "../features/cadastro/cadastro.slice";
 
 const customSessionStorage = {
-  getItem: (key: string) => {
-    return Promise.resolve(sessionStorage.getItem(key));
-  },
-  setItem: (key: string, value: string) => {
-    sessionStorage.setItem(key, value);
-    return Promise.resolve();
-  },
-  removeItem: (key: string) => {
-    sessionStorage.removeItem(key);
-    return Promise.resolve();
-  },
+    getItem: (key: string) => {
+        return Promise.resolve(sessionStorage.getItem(key));
+    },
+    setItem: (key: string, value: string) => {
+        sessionStorage.setItem(key, value);
+        return Promise.resolve();
+    },
+    removeItem: (key: string) => {
+        sessionStorage.removeItem(key);
+        return Promise.resolve();
+    },
 };
 
 const rootReducer = combineReducers({
-  login: loginReducer,
+    login: loginReducer,
+    usuario: usuarioReducer,
+    cadastro: cadastroReducer,
 });
 
 const persistConfig = {
-  key: "root",
-  storage: customSessionStorage, 
-  whitelist: ["login"],
+    key: "root",
+    storage: customSessionStorage,
+    whitelist: [
+        "login",
+        "usuario",
+        "cadastro"
+    ],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 export const persistor = persistStore(store);

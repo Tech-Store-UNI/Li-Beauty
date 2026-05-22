@@ -10,3 +10,5 @@ export interface UsuarioLogado {
   Email: string;
   Perfil: string;
 }
+
+
