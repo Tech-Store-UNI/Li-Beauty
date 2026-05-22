@@ -1,14 +1,17 @@
 import { Box, TextField, Button, Typography, CircularProgress, InputAdornment, IconButton, } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import fundoLogin from "../../img/FundoLogin.png";
 import logo from "../../img/Logo-mais-clara.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../../app/store";
+import { loginUsuario } from "../../features/login/login.thunks";
+import theme from "../../theme";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-
-    const theme = useTheme();
+    const dispatch = useDispatch<AppDispatch>();
+    const loginState = useSelector((state: RootState) => state.login);
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState("");
     const [senha, setSenha] = useState("");
@@ -16,7 +19,6 @@ export const Login = () => {
     const [erroSenha, setErroSenha] = useState("");
     const [erroLogin, setErroLogin] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [localLoading, setLocalLoading] = useState(false);
 
     const handleLogin = async () => {
         setErroUsuario("");
@@ -26,24 +28,48 @@ export const Login = () => {
         if (!usuario.trim()) return setErroUsuario("Informe o usuário.");
         if (!senha.trim()) return setErroSenha("Informe a senha.");
 
-        setLocalLoading(true);
+        try {
+            const resultAction = await dispatch(
+                loginUsuario({ usuario, senha })
+            );
 
-        setTimeout(() => {
-            if (usuario === "admin" && senha === "1234") {
-                sessionStorage.setItem("isLogged", "true");
+            if (loginUsuario.fulfilled.match(resultAction)) {
                 navigate("/dashboard");
             } else {
-                setErroLogin("Usuário ou senha inválidos.");
+                setErroLogin(resultAction.payload || "Erro ao fazer login");
             }
-
-            setLocalLoading(false);
-        }, 800);
+        } catch (err) {
+            setErroLogin("Erro inesperado ao fazer login");
+        }
     };
 
-
     return (
-        <Box component="main" onKeyDown={(e) => { if (e.key === "Enter") handleLogin(); }} sx={{ display: { xs: "block", md: "flex" }, height: "100vh", alignItems: "center", overflow: "hidden", }}>
-            <Box sx={{ backgroundImage: `url(${fundoLogin})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", height: { xs: "0vh", md: "100vh" }, width: { xs: "100%", md: "50%" }, display: "flex", justifyContent: "center", alignItems: "center", px: 3, }}>
+        <Box
+            component="main"
+            onKeyDown={(e) => {
+                if (e.key === "Enter") handleLogin();
+            }}
+            sx={{
+                display: { xs: "block", md: "flex" },
+                height: "100vh",
+                alignItems: "center",
+                overflow: "hidden",
+            }}
+        >
+            <Box
+                sx={{
+                    backgroundImage: `url(${fundoLogin})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    height: { xs: "0vh", md: "100vh" },
+                    width: { xs: "100%", md: "50%" },
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 3,
+                }}
+            >
                 <Box
                     component="img"
                     src={logo}
@@ -56,13 +82,41 @@ export const Login = () => {
                 />
             </Box>
 
-            <Box sx={{ width: { xs: "100%", md: "50%" }, height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: theme.palette.background.paper, px: 4, pt: { xs: 18, md: 0 }, }}>
-
-                <Box sx={{ minWidth: { xs: "100%", sm: "80%", md: "75%" }, display: "flex", flexDirection: "column", gap: 2, }}>
-
-                    <Typography variant="h4" sx={{ textAlign: "center", color: "primary.main", fontWeight: "bold", mb: 3, letterSpacing: 2, display: { xs: "none", md: "block" } }}>
+            <Box
+                sx={{
+                    width: { xs: "100%", md: "50%" },
+                    height: "100vh",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: theme.palette.background.paper,
+                    px: 4,
+                    pt: { xs: 18, md: 0 },
+                }}
+            >
+                <Box
+                    sx={{
+                        minWidth: { xs: "100%", sm: "80%", md: "75%" },
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                    }}
+                >
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            textAlign: "center",
+                            color: "primary.main",
+                            fontWeight: "bold",
+                            mb: 3,
+                            letterSpacing: 2,
+                            display: { xs: "none", md: "block" },
+                        }}
+                    >
                         LOGIN
                     </Typography>
+
                     <TextField
                         label="Nome ou E-mail"
                         value={usuario}
@@ -95,8 +149,14 @@ export const Login = () => {
                         }}
                     />
 
-                    <Button variant="contained" fullWidth sx={{ py: 1.3, fontWeight: 600, height: 50 }} onClick={handleLogin} disabled={localLoading}>
-                        {localLoading ? (
+                    <Button
+                        variant="contained"
+                        fullWidth
+                        sx={{ py: 1.3, fontWeight: 600, height: 50 }}
+                        onClick={handleLogin}
+                        disabled={loginState.loading}
+                    >
+                        {loginState.loading ? (
                             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                 <span>Entrando...</span>
                                 <CircularProgress size={18} color="inherit" />
@@ -106,18 +166,35 @@ export const Login = () => {
                         )}
                     </Button>
 
-                    {erroLogin && !localLoading && (
+                    {(erroLogin || loginState.error) && !loginState.loading && (
                         <Box sx={{ display: "flex", justifyContent: "center" }}>
                             <Typography color="error" sx={{ fontSize: "14px", mt: 1 }}>
-                                {erroLogin}
+                                {erroLogin || loginState.error}
                             </Typography>
                         </Box>
                     )}
                 </Box>
 
-                <Typography variant="body2" sx={{ position: "absolute", bottom: 26, textAlign: "center", color: theme.palette.primary.main, fontSize: { xs: "10px", md: "17px" }, }}>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        position: "absolute",
+                        bottom: 26,
+                        textAlign: "center",
+                        color: theme.palette.primary.main,
+                        fontSize: { xs: "10px", md: "17px" },
+                    }}
+                >
                     Ainda não possui cadastro ?
-                    <span onClick={() => navigate("/cadastro")} style={{ fontWeight: "bold", cursor: "pointer", textDecoration: "underline", marginLeft: "5px" }}>
+                    <span
+                        onClick={() => navigate("/cadastro")}
+                        style={{
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                            marginLeft: "5px",
+                        }}
+                    >
                         Criar conta
                     </span>
                 </Typography>
