@@ -76,38 +76,9 @@ export const Login = () => {
                 </Box>
             </Box>
 
-            <Box
-                sx={{
-                    width: { xs: "100%", md: "50%" },
-                    height: "100vh",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: theme.palette.background.paper,
-                    px: 4,
-                    pt: { xs: 18, md: 0 },
-                }}
-            >
-                <Box
-                    sx={{
-                        minWidth: { xs: "100%", sm: "80%", md: "75%" },
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 2,
-                    }}
-                >
-                    <Typography
-                        variant="h4"
-                        sx={{
-                            textAlign: "center",
-                            color: "primary.main",
-                            fontWeight: "bold",
-                            mb: 3,
-                            letterSpacing: 2,
-                            display: { xs: "none", md: "block" },
-                        }}
-                    >
+            <Box sx={{ width: { xs: "100%", md: "50%" }, height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: theme.palette.background.paper, px: 4, pt: { xs: 18, md: 0 }, }}>
+                <Box sx={{ minWidth: { xs: "100%", sm: "80%", md: "75%" }, display: "flex", flexDirection: "column", gap: 2, }}>
+                    <Typography variant="h4" sx={{ textAlign: "center", color: "primary.main", fontWeight: "bold", mb: 3, letterSpacing: 2, display: { xs: "none", md: "block" }, }}>
                         LOGIN
                     </Typography>
 
@@ -143,13 +114,7 @@ export const Login = () => {
                         }}
                     />
 
-                    <Button
-                        variant="contained"
-                        fullWidth
-                        sx={{ py: 1.3, fontWeight: 600, height: 50 }}
-                        onClick={handleLogin}
-                        disabled={loginState.loading}
-                    >
+                    <Button variant="contained" fullWidth sx={{ py: 1.3, fontWeight: 600, height: 50 }} onClick={handleLogin} disabled={loginState.loading}>
                         {loginState.loading ? (
                             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                 <span>Entrando...</span>
@@ -169,26 +134,9 @@ export const Login = () => {
                     )}
                 </Box>
 
-                <Typography
-                    variant="body2"
-                    sx={{
-                        position: "absolute",
-                        bottom: 26,
-                        textAlign: "center",
-                        color: theme.palette.primary.main,
-                        fontSize: { xs: "10px", md: "17px" },
-                    }}
-                >
+                <Typography variant="body2" sx={{ position: "absolute", bottom: 26, textAlign: "center", color: theme.palette.primary.main, fontSize: { xs: "10px", md: "17px" }, }}>
                     Ainda não possui cadastro ?
-                    <span
-                        onClick={() => navigate("/cadastro")}
-                        style={{
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                            textDecoration: "underline",
-                            marginLeft: "5px",
-                        }}
-                    >
+                    <span onClick={() => navigate("/cadastro")} style={{ fontWeight: "bold", cursor: "pointer", textDecoration: "underline", marginLeft: "5px", }}     >
                         Criar conta
                     </span>
                 </Typography>

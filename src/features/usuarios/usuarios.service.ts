@@ -1,9 +1,10 @@
+// usuarios.service.ts
 import api from "../../util/api";
-import type { Usuarios } from "./usuarios.type";
+import type { Usuario, UsuariosResponse } from "./usuarios.type";
 
-export const LoginService = {
-    async listarUsuarios(): Promise<Usuarios[]> {
-        const response = await api.post("/usuario");
-        return response.data.usuarios; 
-    },
+export const UsuarioService = {
+  async listarUsuarios(): Promise<Usuario[]> {
+    const response = await api.post<UsuariosResponse>("/usuario");
+    return response.data.usuarios;
+  },
 };

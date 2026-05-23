@@ -1,47 +1,27 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Tooltip, Typography } from "@mui/material";
+import type { TableColumn } from "../../../../components/Table/types";
 
-export const DADOS_EXIBICAO_USUARIOS = [
+export const DADOS_EXIBICAO_USUARIOS: TableColumn[] = [
   {
     key: "foto",
     label: "Foto",
     render: (row: any) => (
-      <Avatar src={row.foto} sx={{ width: 40, height: 40, border: '2px solid #f2a7a7' }} />
+      <Avatar sx={{ width: 40, height: 40, border: '2px solid #f2a7a7' }}>
+        {row.nome?.charAt(0).toUpperCase()}
+      </Avatar>
     ),
   },
-  { key: "nome", label: "Nome" },
+  {
+    key: "nome",
+    label: "Nome",
+    width: 90,
+    render: (row: any) => (
+      <Tooltip title={row.nome} arrow>
+        <Typography sx={{ maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontSize: 13, }}>
+          {row.nome}
+        </Typography>
+      </Tooltip>
+    ),
+  },
   { key: "email", label: "E-mail" },
-];
-
-export const rowsComTempoEmpresa = [
-  {
-    id: 1,
-    foto: "https://i.pravatar.cc/150?u=1",
-    nome: "Cristiane Lim..",
-    email: "cris@gmail.com",
-
-  },
-  {
-    id: 2,
-    foto: "https://i.pravatar.cc/150?u=2",
-    nome: "Cristiane Lim..",
-    email: "cris@gmail.com",
-  },
-  {
-    id: 3,
-    foto: "https://i.pravatar.cc/150?u=3",
-    nome: "Cristiane Lim..",
-    email: "cris@gmail.com",
-  },
-  {
-    id: 4,
-    foto: "https://i.pravatar.cc/150?u=4",
-    nome: "Cristiane Lim..",
-    email: "cris@gmail.com",
-  },
-  {
-    id: 5,
-    foto: "https://i.pravatar.cc/150?u=5",
-    nome: "Cristiane Lim..",
-    email: "cris@gmail.com",
-  },
 ];

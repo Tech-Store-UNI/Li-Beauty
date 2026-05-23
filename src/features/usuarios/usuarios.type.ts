@@ -1,14 +1,13 @@
-// features/login/usuarios.types.ts
-
-export interface Usuarios {
+// features/usuarios/usuarios.types.ts
+export interface Usuario {
   id: number;
-  Nome: string;
-  Email: string;
-  Telefone: string | null;
+  Nome: string;     
+  Email: string;     
+  Telefone: string | null; 
 }
 
 export interface UsuariosResponse {
   erro: boolean;
   total: number;
-  usuarios: Usuarios[];
+  usuarios: Usuario[];
 }
