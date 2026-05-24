@@ -5,6 +5,7 @@ import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux
 import loginReducer from "../features/login/login.slice";
 import usuarioReducer from "../features/usuarios/usuarios.slice";
 import cadastroReducer from "../features/cadastro/cadastro.slice";
+import mensagemReducer from "../features/contato/contato.slice";
 
 const customSessionStorage = {
     getItem: (key: string) => {
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     login: loginReducer,
     usuario: usuarioReducer,
     cadastro: cadastroReducer,
+    mensagem: mensagemReducer,
 });
 
 const persistConfig = {
@@ -32,7 +34,8 @@ const persistConfig = {
     whitelist: [
         "login",
         "usuario",
-        "cadastro"
+        "cadastro",
+        "mensagem",
     ],
 };
 
