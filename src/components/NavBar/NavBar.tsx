@@ -22,7 +22,7 @@ export const Navbar = () => {
         const tokenJWT = localStorage.getItem("token");
 
         if (tokenJWT) {
-            navigate("/agendamento");
+            navigate("/dashboard");
         } else {
             navigate("/login");
         }

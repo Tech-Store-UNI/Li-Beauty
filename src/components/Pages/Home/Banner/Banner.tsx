@@ -14,7 +14,7 @@ export const Banner: React.FC = () => {
         const tokenJWT = localStorage.getItem("token");
 
         if (tokenJWT) {
-            navigate("/agendamento");
+            navigate("/dashboard");
         } else {
             navigate("/login");
         }
