@@ -22,9 +22,9 @@
     "dayjs": "^1.11.20",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-redux": "^9.2.0",
-    "react-slick": "^0.31.0",
+    "react-redux": "^9.3.0",
     "react-router-dom": "^7.14.0",
+    "react-slick": "^0.31.0",
     "redux-persist": "^6.0.0",
     "swiper": "^12.1.3"
   },
