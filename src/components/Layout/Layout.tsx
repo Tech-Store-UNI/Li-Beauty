@@ -14,6 +14,7 @@ export const Layout = () => {
 
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Outlet />
+        
       </Box>
       <Footer />
       <Fab
