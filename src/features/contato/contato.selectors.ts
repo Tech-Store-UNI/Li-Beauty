@@ -1,8 +1,8 @@
 import type { RootState } from "../../app/store";
 
-export const selectTodasMensagem = (state: RootState) => state.mensagem.itens;
+export const selectTodasContato = (state: RootState) => state.contato.itens;
 
-export const selectTodasMensagemLoading = (state: RootState) => state.mensagem.loading;
+export const selectTodasContatoLoading = (state: RootState) => state.contato.loading;
 
-export const selectTodasMensagemError = (state: RootState) => state.mensagem.error;
+export const selectTodasContatoError = (state: RootState) => state.contato.error;
 

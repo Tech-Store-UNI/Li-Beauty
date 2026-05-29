@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Modal, Box, Fade } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
-import { StepOneAgendamento } from "./StepOneAgendamento/StepOneAgendamento";
 import { StepTwoAgendamento } from "./StepTwoAgendamento/StepTwoAgendamento";
+import { StepOneAgendamento } from "./StepOneAgendamento/StepOneAgendamento";
 
 
 interface Props {
@@ -59,17 +59,7 @@ export const ModalAgendamento = ({ open, onClose, onSave }: Props) => {
   return (
     <Modal open={open} onClose={resetModal} closeAfterTransition>
       <Fade in={open}>
-        <Box
-          sx={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "rgba(0,0,0,0.45)",
-            p: 2,
-          }}
-        >
+        <Box  sx={{width: "100%",height: "100vh",display: "flex",alignItems: "center",justifyContent: "center",background: "rgba(0,0,0,0.45)",p: 2,}}>
           {step === 1 && (
             <StepOneAgendamento
               formData={formData}

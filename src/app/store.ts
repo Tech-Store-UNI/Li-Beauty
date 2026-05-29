@@ -5,7 +5,9 @@ import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux
 import loginReducer from "../features/login/login.slice";
 import usuarioReducer from "../features/usuarios/usuarios.slice";
 import cadastroReducer from "../features/cadastro/cadastro.slice";
-import mensagemReducer from "../features/contato/contato.slice";
+import contatoReducer from "../features/contato/contato.slice";
+import mensagemReducer from "../features/mensagem/mensagem.slice";
+import agendamentoReducer from "../features/agendamento/agendamento.slice";
 
 const customSessionStorage = {
     getItem: (key: string) => {
@@ -26,6 +28,8 @@ const rootReducer = combineReducers({
     usuario: usuarioReducer,
     cadastro: cadastroReducer,
     mensagem: mensagemReducer,
+    contato: contatoReducer,
+    agendamento: agendamentoReducer,
 });
 
 const persistConfig = {
@@ -36,6 +40,8 @@ const persistConfig = {
         "usuario",
         "cadastro",
         "mensagem",
+        "agendamento",
+        "contato",
     ],
 };
 

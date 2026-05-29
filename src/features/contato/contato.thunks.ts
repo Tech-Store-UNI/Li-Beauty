@@ -1,33 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { Mensagem } from "./contato.type";
+import type { Contato } from "./contato.type";
 import { isErrorResponse } from "../../util/validation";
-import { MensagemService } from "./contato.service";
-
-export const buscarTodasMensagem = createAsyncThunk<Mensagem[]>(
-    "usuario/buscarTodos",
-    async (_, { rejectWithValue }) => {
-        try {
-            return await MensagemService.listarMensagem();
-        } catch (error: unknown) {
-            if (isErrorResponse(error)) {
-                return rejectWithValue(
-                    error.erros?.[0]?.message || "Erro ao carregar usuários"
-                );
-            }
-            return rejectWithValue("Erro ao carregar usuários");
-        }
-    }
-);
+import { ContatoService } from "./contato.service";
 
 
 export const enviarMensagem = createAsyncThunk(
   "usuario/enviarMensagem",
   async (
-    dados: Omit<Mensagem, "id">,
+    dados: Omit<Contato, "id">,
     { rejectWithValue }
   ) => {
     try {
-      return await MensagemService.enviarMensagem(dados);
+      return await ContatoService.enviarMensagem(dados);
     } catch (error: unknown) {
       if (isErrorResponse(error)) {
         return rejectWithValue(

@@ -228,7 +228,6 @@ export const StepTwoAgendamento = ({ formData, setFormData, prevStep, onClose, o
 };
 
 
-
 const confirmationInputStyle = {
     "& .MuiOutlinedInput-root": {
         borderRadius: "6px",
