@@ -4,7 +4,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import EventIcon from "@mui/icons-material/Event";
 import GroupIcon from "@mui/icons-material/Group";
 import LogoutIcon from "@mui/icons-material/Logout";
-import logo from "../../img/logo.png";
+import Logo from "../../img/Logo.png";
 import { NavButton } from "./NavButton";
 
 export const Sidebar = () => {
@@ -19,7 +19,7 @@ export const Sidebar = () => {
         <Box sx={{ width: 250, height: "100vh", backgroundColor: "#ffffff", borderRight: "1px solid #eee", display: "flex", flexDirection: "column", alignItems: "center", pt: 2, }}>
             <Box
                 component="img"
-                src={logo}
+                src={Logo}
                 alt="Logo"
                 sx={{ width: 200, mb: 7, mr: 2 }}
             />
