@@ -5,26 +5,11 @@
     import { LocalEstabelecimento } from '../../components/Pages/Home/LocalEstabelecimento/LocalEstabelecimento'
     import { EntreContato } from '../../components/Pages/Home/EntreContato/EntreContato'
     import { Banner } from '../../components/Pages/Home/Banner/Banner'
-    import { useAppDispatch, useAppSelector } from '../../app/store'
-    import { selectTodosUsuarios } from '../../features/usuarios/usuarios.selectors'
-    import { useEffect } from 'react'
-    import { buscarTodosUsuarios } from '../../features/usuarios/usuarios.thunks'
-
-
 
     export const Home = () => {
 
-        const dispatch = useAppDispatch();
-        const usuarios = useAppSelector(selectTodosUsuarios);
-
-        useEffect(() => {
-            dispatch(buscarTodosUsuarios());
-        }, [dispatch]);
-
-        console.log("Usuarios :", usuarios);
         return (
             <Box>
-
                 <Banner />
                 <Box sx={{ marginTop: { xs: '-50px', md: '-90px' }, position: 'relative', zIndex: 1000 }}>
                     <Features />
