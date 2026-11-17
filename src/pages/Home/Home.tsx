@@ -17,7 +17,6 @@
                     <Catalogo />
                     <LocalEstabelecimento />
                     <EntreContato />
-
                 </Box>
             </Box>
         )

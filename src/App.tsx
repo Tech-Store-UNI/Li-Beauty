@@ -17,6 +17,8 @@ import { Agendamento } from './pages/PaginasSistemas/Agendamento/Agendamento';
 import { Portifolio } from './components/Pages/Portfolio/Portfolio';
 import { Maquiagem } from './components/Pages/Servicos/Maquiagem/Maquiagem';
 import { Sobrancelhas } from './components/Pages/Servicos/Sobrancelhas/Sobrancelhas';
+import { Perfil } from './pages/Perfil/Perfil';
+import { ScrollToTop } from './ScrollToTop';
 
 
 
@@ -27,6 +29,7 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -44,6 +47,7 @@ export function App() {
             <Route index element={<Dashboard />} />
             <Route path="agendamento" element={<Agendamento />} />
             <Route path="clientes" element={<Clientes />} />
+            <Route path="perfil" element={<Perfil />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -9,3 +9,5 @@ const api: AxiosInstance = axios.create({
 });
 
 export default api;
+
+export const URL_FOTOS = "https://zynexcode.com/api/";

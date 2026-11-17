@@ -4,7 +4,7 @@ import type { Usuario, UsuariosResponse } from "./usuarios.type";
 
 export const UsuarioService = {
   async listarUsuarios(): Promise<Usuario[]> {
-    const response = await api.post<UsuariosResponse>("/usuario");
+    const response = await api.get<UsuariosResponse>("/usuario");
     return response.data.usuarios;
   },
 };

@@ -1,4 +1,3 @@
-// src/pages/Clientes/Clientes.tsx (ou o caminho do seu arquivo)
 import { useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -11,144 +10,155 @@ import { selectTodosUsuarios } from "../../../features/usuarios/usuarios.selecto
 import { DADOS_EXIBICAO_USUARIOS } from "./util/types";
 import { buscarTodosUsuarios } from "../../../features/usuarios/usuarios.thunks";
 import type { TableRow } from "../../../components/Table/types";
-import { DrawerUsuarios, type FormularioUsuario } from "./DrawerUsuarios/DrawerUsuarios";
-
-
-type UsuarioTabela = {
-  id: number;
-  nome: string;
-  email: string;
-};
+import { DrawerUsuarios } from "./DrawerUsuarios/DrawerUsuarios";
+import type { Usuario } from "../../../features/usuarios/usuarios.type";
 
 export const Clientes = () => {
-  const dispatch = useAppDispatch();
-  const usuarios = useAppSelector(selectTodosUsuarios);
-  const [drawerAberto, setDrawerAberto] = useState(false);
-  const [usuarioSelecionado, setUsuarioSelecionado] = useState<UsuarioTabela | null>(null);
+    const dispatch = useAppDispatch();
+    const usuarios = useAppSelector(selectTodosUsuarios);
+    const [drawerAberto, setDrawerAberto] = useState(false);
+    const [usuarioSelecionado, setUsuarioSelecionado] = useState<Usuario | null>(null);
 
-  const [formulario, setFormulario] = useState<FormularioUsuario>({
-    nome: "",
-    email: "",
-    foto: null,
-  });
-
-  useEffect(() => {
-    dispatch(buscarTodosUsuarios());
-  }, [dispatch]);
-
-  const handleVerDetalhes = (row: TableRow) => {
-    setUsuarioSelecionado({
-      id: row.id as number,
-      nome: String(row.nome ?? ""),
-      email: String(row.email ?? ""),
+    const [formulario, setFormulario] = useState<Usuario>({
+        id: 0,
+        Nome: "",
+        Email: "",
+        Telefone: "",
+        DtCad: null,
+        Perfil: "cliente",
+        Ativo: 1,
+        avatar_url: null,
     });
 
-    setFormulario({
-      nome: String(row.nome ?? ""),
-      email: String(row.email ?? ""),
-      foto: null,
-    });
+    useEffect(() => {
+        dispatch(buscarTodosUsuarios());
+    }, [dispatch]);
 
-    setDrawerAberto(true);
-  };
+    const handleVerDetalhes = (row: TableRow) => {
+        // Mapeamento corrigido para não perder nenhum campo (incluindo avatar_url e DtCad)
+        const usuarioObj: Usuario = {
+            id: Number(row.id ?? 0),
+            Nome: String(row.Nome ?? row.nome ?? ""),
+            Email: String(row.Email ?? row.email ?? ""),
+            Telefone: (row.Telefone ?? row.telefone ?? "") as string | null,
+            DtCad: (row.DtCad ?? row.dtCad ?? null) as string | null,
+            Perfil: String(row.Perfil ?? row.perfil ?? "cliente"),
+            Ativo: Number(row.Ativo ?? row.ativo ?? 1),
+            avatar_url: (row.avatar_url ?? row.avatarUrl ?? null) as string | null,
+        };
 
-  const handleNovoUsuario = () => {
-    setUsuarioSelecionado(null);
-    setFormulario({
-      nome: "",
-      email: "",
-      foto: null,
-    });
-    setDrawerAberto(true);
-  };
+        setUsuarioSelecionado(usuarioObj);
+        setFormulario(usuarioObj);
+        setDrawerAberto(true);
+    };
 
-  const handleFecharDrawer = () => {
-    setDrawerAberto(false);
-    setUsuarioSelecionado(null);
-  };
+    const handleNovoUsuario = () => {
+        setUsuarioSelecionado(null);
+        setFormulario({
+            id: 0,
+            Nome: "",
+            Email: "",
+            Telefone: "",
+            DtCad: null,
+            Perfil: "cliente",
+            Ativo: 1,
+            avatar_url: null,
+        });
+        setDrawerAberto(true);
+    };
 
-  const handleChange = (campo: keyof FormularioUsuario, valor: any) => {
-    setFormulario((prev) => ({
-      ...prev,
-      [campo]: valor,
+    const handleFecharDrawer = () => {
+        setDrawerAberto(false);
+        setUsuarioSelecionado(null);
+    };
+
+    const handleChange = (campo: keyof Usuario, valor: any) => {
+        setFormulario((prev) => ({
+            ...prev,
+            [campo]: valor,
+        }));
+    };
+
+    const handleSalvar = () => {
+        if (!formulario.Nome.trim() || !formulario.Email.trim()) {
+            return;
+        }
+
+        if (usuarioSelecionado) {
+            console.log("Editar usuário:", { ...formulario });
+        } else {
+            console.log("Criar usuário:", formulario);
+        }
+        handleFecharDrawer();
+    };
+
+    const actions = [
+        {
+            icon: (
+                <Typography component="span" sx={{ fontSize: 14, fontWeight: 500, color: "primary.contrastText", cursor: "pointer", p: 0.5 }}>
+                    Detalhes
+                </Typography>
+            ),
+            onClick: (row: TableRow) => handleVerDetalhes(row),
+        },
+    ];
+
+    const listaUsuarios = usuarios || [];
+
+    const rowsTabela: Usuario[] = listaUsuarios.map((u) => ({
+        id: u.id,
+        Nome: u.Nome,
+        Email: u.Email,
+        Telefone: u.Telefone,
+        DtCad: u.DtCad,
+        Perfil: u.Perfil,
+        Ativo: u.Ativo,
+        avatar_url: u.avatar_url,
     }));
-  };
 
-  const handleSalvar = () => {
-    if (!formulario.nome.trim() || !formulario.email.trim()) {
-      return;
-    }
+    const modoEdicao = usuarioSelecionado !== null;
 
-    if (usuarioSelecionado) {
-      console.log("Editar usuário:", {
-        id: usuarioSelecionado.id,
-        ...formulario,
-      });
-    } else {
-      console.log("Criar usuário:", formulario);
-    }
-    handleFecharDrawer();
-  };
+    return (
+        <Box sx={{ ...containerTablecomunStyles }}>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 4, gap: 2 }}>
+                <PeopleAltIcon sx={{ fontSize: { xs: 34, sm: 70 }, color: "secondary.main" }} />
 
-  const actions = [
-    {
-      icon: (
-        <Typography component="span" sx={{ fontSize: 14, fontWeight: 500, color: "primary.contrastText", cursor: "pointer", p: 0.5 }}>
-          Detalhes
-        </Typography>
-      ),
-      onClick: (row: UsuarioTabela) => handleVerDetalhes(row),
-    },
-  ];
+                <Box sx={{ display: "flex", alignItems: { xs: "flex-start", sm: "center" }, justifyContent: "space-between", flex: 1, gap: 2, flexWrap: "wrap" }}>
+                    <Box sx={{ flex: 1, minWidth: 200 }}>
+                        <Typography sx={{ fontSize: { xs: 22, sm: 25 }, fontWeight: 800 }}>
+                            Gerenciamento de usuários
+                        </Typography>
+                        <Typography sx={{ fontSize: 11, color: "#6C6C6C" }}>
+                            Controle de acessos, perfis de usuários e histórico de agendamentos.
+                        </Typography>
+                    </Box>
 
-  const rowsTabela: UsuarioTabela[] = usuarios.map((u) => ({
-    id: u.id,
-    nome: u.Nome,
-    email: u.Email,
-  }));
+                    <Button size="large" variant="contained" startIcon={<PersonAddAlt1Icon />} onClick={handleNovoUsuario}>
+                        Novo usuário
+                    </Button>
+                </Box>
+            </Box>
 
-  const modoEdicao = usuarioSelecionado !== null;
+            <MuiTableContainer
+                columns={DADOS_EXIBICAO_USUARIOS}
+                rows={rowsTabela}
+                onRowClick={handleVerDetalhes}
+                lastColumn="Detalhes"
+                actions={actions}
+                LastColumnSx={{ textAlign: "end" }}
+                tableHeadSx={{ minWidth: 0, width: 100 }}
+                tableIConSx={{ justifyContent: "end" }}
+                containerSx={{ ...scrollResponse(theme) }}
+            />
 
-  return (
-    <Box sx={{ ...containerTablecomunStyles }}>
-      <Box sx={{ display: "flex", alignItems: "center", mb: 4, gap: 2 }}>
-        <PeopleAltIcon sx={{ fontSize: { xs: 34, sm: 70 }, color: "secondary.main" }} />
-
-        <Box sx={{ display: "flex", alignItems: { xs: "flex-start", sm: "center" }, justifyContent: "space-between", flex: 1, gap: 2, flexWrap: "wrap" }}>
-          <Box sx={{ flex: 1, minWidth: 200 }}>
-            <Typography sx={{ fontSize: { xs: 22, sm: 25 }, fontWeight: 800 }}>
-              Gerenciamento de usuários
-            </Typography>
-            <Typography sx={{ fontSize: 11, color: "#6C6C6C" }}>
-              Controle de acessos, perfis de usuários e histórico de agendamentos.
-            </Typography>
-          </Box>
-
-          <Button size="large" variant="contained" startIcon={<PersonAddAlt1Icon />} onClick={handleNovoUsuario}>
-            Novo usuário
-          </Button>
+            <DrawerUsuarios
+                open={drawerAberto}
+                modoEdicao={modoEdicao}
+                formulario={formulario}
+                onClose={handleFecharDrawer}
+                onChange={handleChange}
+                onSalvar={handleSalvar}
+            />
         </Box>
-      </Box>
-
-      <MuiTableContainer
-        columns={DADOS_EXIBICAO_USUARIOS}
-        rows={rowsTabela}
-        onRowClick={handleVerDetalhes}
-        lastColumn="Detalhes"
-        actions={actions}
-        LastColumnSx={{ textAlign: "end" }}
-        tableHeadSx={{ minWidth: 0, width: 100 }}
-        tableIConSx={{ justifyContent: "end" }}
-        containerSx={{ ...scrollResponse(theme) }}
-      />
-      <DrawerUsuarios
-        open={drawerAberto}
-        modoEdicao={modoEdicao}
-        formulario={formulario}
-        onClose={handleFecharDrawer}
-        onChange={handleChange}
-        onSalvar={handleSalvar}
-      />
-    </Box>
-  );
+    );
 };

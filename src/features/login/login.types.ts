@@ -8,6 +8,7 @@ export interface UsuarioLogado {
   id: number;
   Nome: string;
   Email: string;
+  Foto?: string
   Perfil: string;
 }
 
